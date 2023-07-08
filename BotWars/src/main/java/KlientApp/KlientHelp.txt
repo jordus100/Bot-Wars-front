@@ -1,19 +1,69 @@
-server
-conf
-list
-game
-
 NAME
-    botwars - is an app used for online bot tournaments.
-SYNOPSIS
-    botwars server <-s domain> [-reg <code> | -unr]
-    botwars conf [<-g game_name> [-add <-p path> [-n name]|--enable|--disable|--verify]|<-a account_name>]
-    botwars list [games|tournaments|history|players]
-    botwars game []
+    botwars - is a program used for online bot tournaments.
 
-    In the case of a command, you get a formal description of how to run it and what command line options it takes.
+SYNOPSIS
+    botwars server domain [[--reg|--unr] code]
+    botwars conf game [--add|--del path]
+    botwars player [-n name]
+    botwars list [games|tournaments|history|players]
+    botwars game [--reg|--unr] [--info] [--requirements] [--rules] [--verify] tournament_id
+
 DESCRIPTION
-    A textual description of the functioning of the command or function.
+    botwars is a program made for game lovers and those who takes
+    playing games to another level. Program allows creating
+    tournaments where participants compete against each other or
+    rather other bots.
+
+    botwars server domain
+        Display basic information about the server with provided
+        domain.
+
+    botwars server --reg/--unr code
+        Allows un/registering of the player with activation code,
+        that is provided by admins of the server.
+
+    botwars conf
+        Display configurations for games and bots.
+
+    botwars conf game
+       Display configurations for the given game and bot.
+
+    botwars conf game --add/--def path
+        Adds or deletes a path to model for given name.
+
+   botwars player
+        Display basic info about the account of the player.
+
+   botwars player -n name
+        Changes nickname of the player, though the new name can
+        be not allowed by the server.
+
+   botwars list [games|tournaments|history|players]
+        list respectively:
+        -   Type of games that can be played
+        -   Tournaments planned on the server.
+        -   Tournaments played historically by the player.
+        -   Players registered on given server.
+
+   botwars game
+        botwars list game
+
+   botwars game [--reg|--unr]  tournament_id
+        Register or unregister player for a tournament of thr
+        provided id.
+
+   botwars game [--requirements] tournament_id
+        Display requirements for the bot that can participate in
+        tournament with provided id.
+
+   botwars game [--rules] tournament_id
+        Display rules of the game in the tournament and provides
+        the interface that should provide bot.
+
+   botwars game [--verify] tournament_id
+        Checks if model provided satisfy the requirements
+        specified for the tournament.
+
 EXAMPLES
     Some examples of common usage.
 SEE ALSO
