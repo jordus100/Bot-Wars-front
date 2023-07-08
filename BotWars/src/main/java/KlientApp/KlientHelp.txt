@@ -1,0 +1,26 @@
+server
+conf
+list
+game
+
+NAME
+    botwars - is an app used for online bot tournaments.
+SYNOPSIS
+    botwars server <-s domain> [-reg <code> | -unr]
+    botwars conf [<-g game_name> [-add <-p path> [-n name]|--enable|--disable|--verify]|<-a account_name>]
+    botwars list [games|tournaments|history|players]
+    botwars game []
+
+    In the case of a command, you get a formal description of how to run it and what command line options it takes.
+DESCRIPTION
+    A textual description of the functioning of the command or function.
+EXAMPLES
+    Some examples of common usage.
+SEE ALSO
+    A list of related commands or functions.
+BUGS
+    List known bugs.
+AUTHOR
+   Specify your contact information.
+COPYRIGHT
+    Specify your copyright information.
