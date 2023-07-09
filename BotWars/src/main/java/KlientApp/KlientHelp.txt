@@ -7,6 +7,7 @@ SYNOPSIS
     botwars player [-n name]
     botwars list [games|tournaments|history|players]
     botwars game [--reg|--unr] [--info] [--requirements] [--rules] [--verify] tournament_id
+    botwars game [--demo] game
 
 DESCRIPTION
     botwars is a program made for game lovers and those who takes
@@ -28,7 +29,7 @@ DESCRIPTION
     botwars conf game
        Display configurations for the given game and bot.
 
-    botwars conf game --add/--def path
+    botwars conf game --add/--del path
         Adds or deletes a path to model for given name.
 
    botwars player
@@ -64,6 +65,9 @@ DESCRIPTION
         Checks if model provided satisfy the requirements
         specified for the tournament.
 
+   botwars game --demo game
+        Downloads the game specified as an argument.
+
 EXAMPLES
     Some examples of common usage.
 SEE ALSO
@@ -73,4 +77,4 @@ BUGS
 AUTHOR
    Specify your contact information.
 COPYRIGHT
-    Specify your copyright information.
+    Copyright 2013, Stanisław Maliński, Jan Stachurski, All rights reserved.

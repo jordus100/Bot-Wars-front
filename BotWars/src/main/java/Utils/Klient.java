@@ -1,6 +1,8 @@
 package Utils;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,8 +10,13 @@ public class Klient {
     private String name;
     private String serverDomain;
     private String code;
-    private String [] modelsPaths;
-    private String [] modelsName;
+    private HashMap<String, String> paths;
+    private boolean isRegistered;
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
     private String [] histTournaments;
     private File conf = new File("userconf.txt");
 
@@ -25,12 +32,12 @@ public class Klient {
         return code;
     }
 
-    public String[] getModelsPaths() {
-        return modelsPaths;
+    public String getServerDomain() {
+        return serverDomain;
     }
 
-    public String[] getModelsName() {
-        return modelsName;
+    public String getCode() {
+        return code;
     }
 
     public String[] getHistTournaments() {
@@ -52,19 +59,18 @@ public class Klient {
         saveUser();
     }
 
-    public void setModelsPaths(int index, String modelsPath) {
-        this.modelsPaths[index] = modelsPath;
-        saveUser();
-    }
-
-    public void setModelsName(int index, String modelsName) {
-        this.modelsName[index] = modelsName;
+    public void addModelsPaths(String game, String modelsPath) {
+        paths.put(game, modelsPath);
         saveUser();
     }
 
     public void setHistTournaments(int index, String histTournaments) {
         this.histTournaments[index] = histTournaments;
         saveUser();
+    }
+
+    public Set<String> getKnownGames(){
+        return paths.keySet();
     }
 
     public Klient(){
@@ -98,18 +104,25 @@ public class Klient {
             writer.write("Server: " + serverDomain);
         if (code != null)
             writer.write("Code: " + code);
-        int n = modelsName.length;
-        for(int i = 0; i < n; i++){
-            if (modelsName[i] != null)
-                writer.write("Model: \"" + modelsName[i] + "\" \"" + modelsPaths[i] + "\"");
+        Set<String> keys = paths.keySet();
+        for(String key : keys){
+            writer.write("Model: \"" + key + "\" \"" + paths.get(key) + "\"");
         }
     }
 
-    private void loadUser(BufferedReader reader) throws IOException {
-        int index = 0;
-        modelsPaths = new String[20];
-        modelsName = new String[20];
+    public String getPath(String key){
+        return paths.get(key);
+    }
 
+    public void addPath(String key, String value){
+        paths.put(key, value);
+    }
+
+    public void delPath(String key){
+        paths.remove(key);
+    }
+
+    private void loadUser(BufferedReader reader) throws IOException {
         String modelPattern = "Model: \"(\\w+)\" \"([.*])\"";
         String attributePattern = "(\\w+): \"(.+)\"";
 
@@ -132,8 +145,7 @@ public class Klient {
                     break;
                 case "Model":
                     m = model.matcher(m.group(2));
-                    modelsName[index] = m.group(1);
-                    modelsPaths[index] = m.group(2);
+                    paths.put( m.group(1), m.group(2));
                 case "History":
                     break;
             }
