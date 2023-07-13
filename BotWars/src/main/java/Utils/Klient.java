@@ -10,7 +10,7 @@ public class Klient {
     private String name;
     private String serverDomain;
     private String code;
-    private HashMap<String, String> paths;
+    private HashMap<Game, String> paths;
     private boolean isRegistered;
 
     public boolean isRegistered() {
@@ -59,7 +59,7 @@ public class Klient {
         saveUser();
     }
 
-    public void addModelsPaths(String game, String modelsPath) {
+    public void addModelsPaths(Game game, String modelsPath) {
         paths.put(game, modelsPath);
         saveUser();
     }
@@ -69,7 +69,7 @@ public class Klient {
         saveUser();
     }
 
-    public Set<String> getKnownGames(){
+    public Set<Game> getKnownGames(){
         return paths.keySet();
     }
 
@@ -104,8 +104,8 @@ public class Klient {
             writer.write("Server: " + serverDomain);
         if (code != null)
             writer.write("Code: " + code);
-        Set<String> keys = paths.keySet();
-        for(String key : keys){
+        Set<Game> keys = paths.keySet();
+        for(Game key : keys){
             writer.write("Model: \"" + key + "\" \"" + paths.get(key) + "\"");
         }
     }
@@ -115,7 +115,7 @@ public class Klient {
     }
 
     public void addPath(String key, String value){
-        paths.put(key, value);
+        paths.put(Game.valueOf(key), value);
     }
 
     public void delPath(String key){
@@ -123,7 +123,7 @@ public class Klient {
     }
 
     private void loadUser(BufferedReader reader) throws IOException {
-        String modelPattern = "Model: \"(\\w+)\" \"([.*])\"";
+        String modelPattern = "Model: \"([A-Z]+)\" \"([.*])\"";
         String attributePattern = "(\\w+): \"(.+)\"";
 
         Pattern attribute = Pattern.compile(attributePattern);
@@ -145,10 +145,26 @@ public class Klient {
                     break;
                 case "Model":
                     m = model.matcher(m.group(2));
-                    paths.put( m.group(1), m.group(2));
+                    paths.put(Game.valueOf(m.group(1)), m.group(2));
                 case "History":
                     break;
             }
         }
+    }
+
+    public int compareRequierments(){
+        return 0;
+    }
+
+    public String modelSize(Game type) {
+        return "";
+    }
+
+    public String getFailedTimeOutTest() {
+        return "";
+    }
+
+    public String getUpsentMehotds(Game type, String[] interfaces) {
+        return "";
     }
 }

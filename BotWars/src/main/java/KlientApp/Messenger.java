@@ -1,8 +1,11 @@
 package KlientApp;
 
+import Utils.BotRequierments;
+import Utils.Game;
 import Utils.TournamentInfo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 
 public class Messenger {
@@ -51,13 +54,7 @@ public class Messenger {
     public void failedToRegisterDueToInvalidTornamentId(int tournament_id) {
     }
 
-    public void failedToRegitsterDueToBeUnknownPlayer(String name) {
-    }
-
     public void failedToRegisterDueToAlreadyBeingRegisterd(String name) {
-    }
-
-    public void failedToRegisterDueToLackOfConnection() {
     }
 
     public void successfullyUnRegisterdForTournament(String name, TournamentInfo tournamentInfo) {
@@ -66,18 +63,45 @@ public class Messenger {
     public void failedToUnRegisterDueToInvalidTornamentId(int tournament_id) {
     }
 
-    public void failedToUnRegitsterDueToBeUnknownPlayer(String name) {
-    }
-
     public void failedToUnRegisterDueToNotBeingRegisterd(String name) {
-    }
-
-    public void failedToUnRegisterDueToLackOfConnection() {
     }
 
     public void displayTournamentInfo(TournamentInfo tournamentInfo) {
     }
 
     public void displayTournamentInfoWhenRegisterd(TournamentInfo tournamentInfo) {
+    }
+
+    public void failedToPerformActionDueToLackOfConnection() {
+    }
+
+    public void failedToPerformActionDueToBeUnknownPlayer(String name) {
+    }
+
+    public void failedToPerformActionDueToInvalidTornamentId(int tournament_id) {
+    }
+
+    public void displayBotRequierments(BotRequierments req){
+    }
+
+    public void displayRules(File rules) {
+    }
+
+    public void unknownOption(String arg) {
+    }
+
+    public void requiermentsAreSatified() {
+    }
+
+    public void sizeRequiermentNotSatisfied(int size, String modelSize) {
+    }
+
+    public void timeOutRequiermentNotSatisfied(int size, String failedTimeOutTest) {
+    }
+
+    public void interfaceRequiermentNotSatisfied(String[] interfaces, String upsentMehotds) {
+    }
+
+    public void noModelForThisGame(Game type) {
     }
 }
