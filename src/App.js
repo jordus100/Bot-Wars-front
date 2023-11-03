@@ -1,26 +1,15 @@
-import logo from './logo.svg';
 import './App.css'
+import User from "./User/User";
 
 function App() {
     return (
-        <body>
+        <>
         <div id="title">
             <div className="title">
                 <h1>Bot-Wars</h1>
             </div>
-            <div className="container">
-                <div className="login">
-                    <div className="col-6">
-                        <a href="login.html">
-                            <button className="btn">Login</button>
-                        </a>
-                    </div>
-                    <div className="col-6">
-                        <a href="register.html">
-                            <button className="btn">Register</button>
-                        </a>
-                    </div>
-                </div>
+            <div className="menu-container">
+                <User isLoggedIn={false}/>
             </div>
         </div>
         <div id="menu-bar" className="container">
@@ -35,8 +24,8 @@ function App() {
                 </a>
             </div>
             <div className="col-3">
-                <a href="games/games">
-                    <button className="btn">Rules</button>
+                <a href="games">
+                    <button className="btn">Games</button>
                 </a>
             </div>
             <div className="col-3">
@@ -45,7 +34,7 @@ function App() {
                 </a>
             </div>
         </div>
-        </body>
+        </>
     )
 }
 
