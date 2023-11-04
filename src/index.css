@@ -1,17 +1,3 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .color-primary-0 { color: #14980D }	/* Main Primary color */
 .color-primary-1 { color: #2E602B }
 .color-primary-2 { color: #185515 }
@@ -30,3 +16,30 @@ code {
 .color-secondary-2-3 { color: #530AD2 }
 .color-secondary-2-4 { color: #3F05A2 }
 
+body {
+  background-color: #242424;
+  color: #363636;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}
+
+::selection {
+  background-color: #242424;
+  color: #b5da32;
+}
+
+.clickable, .btn {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.clickable:hover, .btn:hover {
+  background-color: #2003204b;
+  color: #fff;
+  box-shadow: 0 0 0.2cm #088f0f;
+}
+
+.container {
+  background-color: #242424;
+  border: #393a39 3px solid;
+  border-radius: 2px;
+}

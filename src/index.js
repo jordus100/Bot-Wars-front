@@ -3,6 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+import GamesList from "./Games/GamesList";
+
+const games = [{name:'Szachy'}, {name:'Warcaby'}, {name:'Scrabble'}, {name:'Chińczyk'}, {name:'Go'}]
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App/>,
+    },
+    {
+        path: "/games",
+        element: <GamesList games={games}/>,
+    },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +30,9 @@ root.render(
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <title>Bot-Wars</title>
         </head>
-        <App/>
+        <body>
+            <RouterProvider router={router}/>
+        </body>
     </React.StrictMode>
 );
 
