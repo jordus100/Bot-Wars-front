@@ -8,6 +8,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import GamesList from "./Games/GamesList";
+import AddGameForm from "./Games/AddGameForm";
 
 const games = [{name:'Szachy'}, {name:'Warcaby'}, {name:'Scrabble'}, {name:'Chińczyk'}, {name:'Go'}]
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     {
         path: "/games",
         element: <GamesList games={games}/>,
+    },
+    {
+        path: "/games/add",
+        element: <AddGameForm games={games}/>,
     },
 ]);
 
