@@ -4,7 +4,8 @@ div {
 }
 
 .container-list {
-    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .list {
@@ -15,8 +16,25 @@ div {
 .game-list-element {
     margin: 10px;
     height: 80px;
-    padding-left: 10px;
     font-size: 40px;
+    width: calc(100% - 10px);
+    position: relative;
+}
+
+.game-name{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.del-btn{
+    display: block;
+    position: absolute;
+    right: 29px;
+    top: 28px;
+    font-size: 15px;
+    z-index: 20;
 }
 
 .game-list-element::after{
