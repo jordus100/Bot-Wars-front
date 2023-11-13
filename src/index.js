@@ -10,7 +10,7 @@ import {
 import GamesList from "./Games/GamesList";
 import AddGameForm from "./Games/AddGameForm";
 
-const games = [{name:'Szachy'}, {name:'Warcaby'}, {name:'Scrabble'}, {name:'Chińczyk'}, {name:'Go'}]
+const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 
 const router = createBrowserRouter([
     {
