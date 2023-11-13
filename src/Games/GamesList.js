@@ -13,8 +13,7 @@ function GamesList({games}) {
         <div className="container container-list">
             <div className="list">
                 <div className="container game-list-element btn">
-                    {/* hyperlink to addGame form */}
-                    <a className="game-name" href="../">Dodaj grę 
+                    <a className="game-name" href="/games/add">Dodaj grę
                 </a>
             </div>
                 {listItems}
