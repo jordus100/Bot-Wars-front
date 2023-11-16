@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import User from "./User/User";
 
 function App() {
