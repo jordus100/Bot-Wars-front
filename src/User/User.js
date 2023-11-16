@@ -1,5 +1,5 @@
 import generic_user from '../resources/icons8-male-user-50.png'
-import '../App.css'
+import '../App.scss'
 
 function User({isLoggedIn}) {
    if (isLoggedIn) {

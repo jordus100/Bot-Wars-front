@@ -1,4 +1,4 @@
-import './AddGameForm.css'
+import './AddGameForm.scss'
 
 function AddGameForm() {
     return (

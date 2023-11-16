@@ -1,4 +1,4 @@
-import './GamesList.css'
+import './GamesList.scss'
 import DeleteGameButton from './DeleteGameButton';
 function GamesList({games}) {
     const listItems = games.map(game => {
