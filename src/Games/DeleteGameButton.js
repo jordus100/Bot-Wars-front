@@ -22,7 +22,7 @@ class DeleteGameButton extends React.Component {
 
   render() {
     return (
-        <div className="del-btn" onClick={() => this.handleClick(this.props.gameId)}>Usuń gre</div>    );
+        <div className="del-btn color-primary-3" onClick={() => this.handleClick(this.props.gameId)}>Usuń gre</div>    );
   }
 }
 

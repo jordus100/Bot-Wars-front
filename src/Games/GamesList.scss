@@ -13,12 +13,23 @@ div {
     overflow-y:scroll;
 }
 
+.add-game-btn{
+    text-decoration: none;
+}
+
 .game-list-element {
     margin: 10px;
     height: 80px;
     font-size: 40px;
     width: calc(100% - 10px);
     position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.games-container{
+    width: 80%;
+    margin: 0 auto;
 }
 
 .game-name{
@@ -26,6 +37,7 @@ div {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    width: 100%;
 }
 
 .del-btn{
@@ -35,6 +47,7 @@ div {
     top: 28px;
     font-size: 15px;
     z-index: 20;
+    cursor:pointer;
 }
 
 .game-list-element::after{

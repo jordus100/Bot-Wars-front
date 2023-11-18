@@ -6,21 +6,21 @@ function AddGameForm() {
         <h1>Add a new type of game</h1>
         <div>
             <form>
-               <label htmlFor="gameName">Name:</label>
+               <label className="color-primary-3" htmlFor="gameName">Name:</label>
                <br></br>
                <input type="text" id="gameName"></input>
                <br></br>
-               <label htmlFor="gameDesc">Game description:</label>
+               <label className="color-primary-3" htmlFor="gameDesc">Game description:</label>
                <br></br>
                <textarea id="gameDesc" cols="40" rows="5"></textarea>
-               <label htmlFor="gameFile">Game files (in .zip)</label>
+               <label className="color-primary-3" htmlFor="gameFile">Game files (in .zip)</label>
                <br></br>
-               <input type="file" id="gameFile" accept=".zip"></input>
+               <input className="color-primary-3" type="file" id="gameFile" accept=".zip"></input>
                 <br></br>
-                <button type="submit" className="submit">Add new game</button>
-                <button className="cancel">Cancel</button>
+                <button type="submit" className="submit color-primary-3">Add new game</button>
+                <button className="cancel color-primary-3">Cancel</button>
             </form>
-            <p>
+            <p className="color-primary-3">
                 Here you can add a new type of a Bot Wars game to the system.<br></br>
                 Following game files must be in the zip archive:<br></br>
                 <ul>
