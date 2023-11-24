@@ -10,7 +10,8 @@ import {
 import GamesList from "./Games/GamesList";
 import AddGameForm from "./Games/AddGameForm";
 import AddTournamentForm from "./Tournaments/AddTournamentForm";
-
+import { Provider } from 'react-redux';
+import store from './User/store';
 
 const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 
@@ -45,7 +46,9 @@ root.render(
             <title>Bot-Wars</title>
         </head>
         <body>
-            <RouterProvider router={router}/>
+            <Provider store={store}>
+                <RouterProvider router={router}/>
+            </Provider>
         </body>
     </React.StrictMode>
 );
