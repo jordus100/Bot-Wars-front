@@ -10,7 +10,6 @@ function GamesList({games}) {
         )
     })
     return (
-        <div>
         <div className="games-container">
             <h1>Games</h1>
             <div className="container container-list">
@@ -23,7 +22,6 @@ function GamesList({games}) {
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 

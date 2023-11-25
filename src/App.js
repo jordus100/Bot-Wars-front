@@ -1,5 +1,6 @@
 import './App.scss'
 import User from "./User/User";
+import {Link} from "react-router-dom";
 
 function App() {
     return (
@@ -19,9 +20,9 @@ function App() {
                     </a>
                 </div>
                 <div className="col-3">
-                    <a href="leaderboard.html">
-                        <button className="btn">Leaderboard</button>
-                    </a>
+                    <Link to="tournaments/add">
+                        <button className="btn">Tournaments</button>
+                    </Link>
                 </div>
                 <div className="col-3">
                     <a href="games">

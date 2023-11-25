@@ -1,0 +1,58 @@
+@import '../index';
+
+.add-tournament-form {
+    @extend .color-primary-0;
+    @extend h1;
+
+    form {
+        @extend .container;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            label {
+                @extend .color-primary-3;
+                font-size: 25px;
+                margin-bottom: 5px;
+            }
+
+            input, select, textarea {
+                width: 100%;
+                padding: 5px;
+                min-height: 25px;
+            }
+
+            &.short-input {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                label {
+                    flex-basis: 48%;
+                }
+
+                input, select {
+                    flex-basis: 48%;
+                    max-width: 200px;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            .submit, .cancel {
+                @extend .btn;
+                width: auto; // Auto width based on content
+                flex-grow: 0;
+            }
+        }
+    }
+}

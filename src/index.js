@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import GamesList from "./Games/GamesList";
 import AddGameForm from "./Games/AddGameForm";
+import AddTournamentForm from "./Tournaments/AddTournamentForm";
+
 
 const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 
@@ -24,6 +26,13 @@ const router = createBrowserRouter([
     {
         path: "/games/add",
         element: <AddGameForm games={games}/>,
+    },
+    {
+        path: "/tournaments/add",
+        element: <AddTournamentForm />,
+        // In Future with more Turnaments
+        // Assuming getListOfTypesOfGames returns an array of game types
+        //element: <AddTournamentForm gameTypes={getListOfTypesOfGames()} />,
     },
 ]);
 
