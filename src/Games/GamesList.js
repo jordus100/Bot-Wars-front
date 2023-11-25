@@ -1,6 +1,10 @@
 import './GamesList.scss'
 import DeleteGameButton from './DeleteGameButton';
-function GamesList({games}) {
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login, logout } from './../User/actions';
+function GamesList({games, isAuthenticated, user, login, logout }) {
+// function GamesList({games}) {
     const listItems = games.map(game => {
         return (
             <div key = {game.id} className="container game-list-element btn">
@@ -14,10 +18,11 @@ function GamesList({games}) {
             <h1>Games</h1>
             <div className="container container-list">
                 <div className="list">
+                {isAuthenticated ? (
                     <div className="container game-list-element btn">
-                        <a className="game-name add-game-btn color-primary-3" href="/games/add">Dodaj grę
-                    </a>
-                </div>
+                        <Link className="game-name add-game-btn color-primary-3" to="/games/add">Dodaj grę</Link>
+                    </div>
+                ) : (<></>)}
                     {listItems}
                 </div>
             </div>
@@ -25,4 +30,11 @@ function GamesList({games}) {
     )
 }
 
-export default GamesList
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.isAuthenticated,
+    user: state.user,
+  });
+  
+const mapDispatchToProps = {login,logout,};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamesList);

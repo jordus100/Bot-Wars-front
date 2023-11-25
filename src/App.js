@@ -15,9 +15,9 @@ function App() {
             </div>
             <div id="menu-bar" className="container">
                 <div className="col-3">
-                    <a href="index.html">
+                    <Link to="index.html">
                         <button className="btn">Home</button>
-                    </a>
+                    </Link>
                 </div>
                 <div className="col-3">
                     <Link to="tournaments/add">
@@ -25,14 +25,14 @@ function App() {
                     </Link>
                 </div>
                 <div className="col-3">
-                    <a href="games">
+                    <Link to="games">
                         <button className="btn">Games</button>
-                    </a>
+                    </Link>
                 </div>
                 <div className="col-3">
-                    <a href="about.html">
+                    <Link to="about.html">
                         <button className="btn">About</button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
