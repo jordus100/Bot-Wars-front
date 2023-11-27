@@ -5,7 +5,7 @@
     @extend h1;
 
     form {
-        @extend .container;
+        @extend .menu-btns;
         padding: 20px;
         display: flex;
         flex-direction: column;
