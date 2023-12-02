@@ -1,0 +1,33 @@
+@import '../index';
+
+.tournamentWrapper{
+    @extend .color-primary-0;
+
+    max-width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+    .tournamentDetails{
+        display:flex;
+        flex-direction: row;
+        text-align: left;
+
+        .details{
+            display:flex;
+            flex-direction: column;
+
+            p{
+                font-size: 20px;
+                margin: 5px 0
+            }
+        }
+
+        .tournamentImage{
+            flex-basis: 50%;
+            background-color: red;
+        }
+    }
+    .tournamentDescription{
+        font-size: 20px;
+        text-align: left;
+    }
+}
