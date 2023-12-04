@@ -10,9 +10,18 @@ function TournamentsList({ tournaments, isAuthenticated }) {
         navigate('/tournaments/add');
     };
 
+    const handleTournamentClick = (tournamentId) => {
+        navigate(`/tournaments/details/${tournamentId}`);
+    };
+    
     const listItems = tournaments.map(tournament => (
         <div key={tournament.id} className="menu-btns game-list-element btn">
-            <button className="game-name color-primary-3 btn">{tournament.name}</button>
+            <button 
+                className="game-name color-primary-3 btn"
+                onClick={() => handleTournamentClick(tournament.id)}
+            >
+                {tournament.name}
+            </button>
             <DeleteTournamentButton tournamentId={tournament.id}/>
         </div>
     ));
