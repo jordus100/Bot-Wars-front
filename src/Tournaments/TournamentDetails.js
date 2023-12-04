@@ -1,7 +1,18 @@
 import './TournamentDetails.scss'
+import { getListOfTournaments } from './getListOfTournaments';
+import { useParams } from 'react-router-dom';
 
-function TournamentDetails({tournament}) {
+function TournamentDetails() {
+
+    const { tournamentId } = useParams();
+    const tournament = getListOfTournaments().find(t => t.id === parseInt(tournamentId));
+
+    if (!tournament) {
+        return <div>Tournament not found</div>;
+    }
     
+    // alert(tournament)
+
     return (
         <div className="tournamentWrapper">
             <p>Szczegóły Turnieju</p>
