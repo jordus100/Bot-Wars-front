@@ -11,16 +11,16 @@ import GamesList from "./Games/GamesList";
 import AddGameForm from "./Games/AddGameForm";
 import TournamentsList from "./Tournaments/TournamentsList";
 import AddTournamentForm from "./Tournaments/AddTournamentForm";
+import TournamentDetails from "./Tournaments/TournamentDetails";
 import { Provider } from 'react-redux';
 import store from './User/store';
+import { getListOfTournaments } from './Tournaments/getListOfTournaments';
 
 const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 
-const getListOfTournaments = () => {
-    return [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}];
-};
+const tournaments = getListOfTournaments();
 
-const router = createBrowserRouter([
+    const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
@@ -42,10 +42,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/tournaments",
-        element: <TournamentsList tournaments={getListOfTournaments()}/>,
-        // In Future with more Turnaments
-        // Assuming getListOfTypesOfGames returns an array of game types
-        //element: <AddTournamentForm gameTypes={getListOfTypesOfGames()} />,
+        element: <TournamentsList tournaments={tournaments} />,
+    },
+    {
+        path: "/tournaments/details/:tournamentId",
+        element: <TournamentDetails />,
     },
 ]);
 
