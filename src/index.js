@@ -7,10 +7,10 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import GamesList from "./Games/GamesList";
-import AddGameForm from "./Games/AddGameForm";
-import TournamentsList from "./Tournaments/TournamentsList";
-import AddTournamentForm from "./Tournaments/AddTournamentForm";
+import GamesList from "./lists/GamesList";
+import AddGameForm from "./forms/AddGameForm";
+import TournamentsList from "./lists/TournamentsList";
+import AddTournamentForm from "./forms/AddTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
 import { Provider } from 'react-redux';
 import store from './User/store';

@@ -1,6 +1,6 @@
 // src/Tournaments/AddTournamentForm.js
 import React, { useState } from 'react';
-import './AddTournamentForm.scss';
+import './Form.scss';
 
 function AddTournamentForm() {
     // state hooks
@@ -14,7 +14,7 @@ function AddTournamentForm() {
     // Handle form submissions and updates here
 
     return (
-        <div className="add-tournament-form">
+        <div className="form">
             <h1>Dodaj nowy turniej</h1>
             <form>
                 <div className="form-group">

@@ -2,7 +2,7 @@ import './GamesList.scss'
 import DeleteGameButton from './DeleteGameButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login, logout } from './../User/actions';
+import { login, logout } from '../User/actions';
 function GamesList({games, isAuthenticated, user, login, logout }) {
 // function GamesList({games}) {
     const listItems = games.map(game => {
