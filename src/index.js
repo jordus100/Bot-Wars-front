@@ -11,6 +11,7 @@ import GamesList from "./lists/GamesList";
 import AddGameForm from "./forms/AddGameForm";
 import TournamentsList from "./lists/TournamentsList";
 import AddTournamentForm from "./forms/AddTournamentForm";
+import EditTournamentForm from "./forms/EditTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
 import { Provider } from 'react-redux';
 import store from './User/store';
@@ -39,6 +40,10 @@ const tournaments = getListOfTournaments();
         // In Future with more Turnaments
         // Assuming getListOfTypesOfGames returns an array of game types
         //element: <AddTournamentForm gameTypes={getListOfTypesOfGames()} />,
+    },
+    {
+        path: "/tournaments/edit/:id",
+        element: <EditTournamentForm />,
     },
     {
         path: "/tournaments",

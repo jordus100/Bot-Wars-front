@@ -1,23 +1,43 @@
-// src/Tournaments/AddTournamentForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './Form.scss';
 import { connect } from 'react-redux';
 import { login, logout } from '../User/actions';
+import { getListOfTournaments } from '../Tournaments/getListOfTournaments';
 
-function AddTournamentForm({isAuthenticated, user, login, logout }) {
+function EditTournamentForm({ isAuthenticated, user, login, logout }) {
+  const { id } = useParams();
+  const [tournament, setTournament] = useState(null);
 
-    // state hooks
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [gameType, setGameType] = useState('');
-    const [playerLimit, setPlayerLimit] = useState('');
-    const [date, setDate] = useState('');
-    // const [restrictions, setRestrictions] = useState([]);
+  useEffect(() => {
+    const tournaments = getListOfTournaments();
+    const foundTournament = tournaments.find((t) => t.id === parseInt(id));
+    setTournament(foundTournament);
+  }, [id]);
 
-    if (!isAuthenticated) {
-        return <div>Resource not allowed :( </div>;
+  // State hooks
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [gameType, setGameType] = useState('');
+  const [playerLimit, setPlayerLimit] = useState('');
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    // Initialize state based on tournament data when available
+    if (tournament) {
+      setTitle(tournament.name);
+      setDescription(tournament.description);
+      setGameType(tournament.gameType);
+      setPlayerLimit(tournament.maxParticipants);
+      setDate(tournament.date);
     }
-    // Handle form submissions and updates here
+  }, [tournament]);
+
+  if (!isAuthenticated) {
+    return <div>Resource not allowed :( </div>;
+  }
+
+  // Handle form submissions and updates here
 
     return (
         <div className="form">
@@ -102,4 +122,4 @@ const mapStateToProps = (state) => ({
   
 const mapDispatchToProps = {login,logout,};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTournamentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditTournamentForm);

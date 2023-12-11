@@ -1,6 +1,4 @@
-import generic_user from '../resources/icons8-male-user-50.png'
 import '../App.scss'
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login, logout } from './actions';
 
