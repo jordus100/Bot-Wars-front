@@ -1,0 +1,80 @@
+.list {
+    width: 80%;
+    min-width: min(100%, 450px);
+    margin: 0 auto;
+
+    .list-element {
+        margin: 10px;
+        height: 80px;
+        font-size: 40px;
+        width: calc(100% - 10px);
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .item-name {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .add-btn {
+        text-decoration: none;
+    }
+
+    .del-btn {
+        display: block;
+        position: absolute;
+        right: 29px;
+        top: 28px;
+        font-size: 15px;
+        z-index: 20;
+        cursor: pointer;
+    }
+
+    .item-list {
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .container-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-element::after {
+        background-image: linear-gradient(to top, rgb(255 255 255 / 0%), #000);
+    }
+
+    .list-element::before {
+        background-image: linear-gradient(to bottom, rgb(255 255 255 / 0%), #000);
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #242424;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #088f0f;
+        border-radius: 2px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+}
