@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import GamesList from "./lists/GamesList";
 import AddGameForm from "./forms/AddGameForm";
+import RegisterForm from "./forms/RegisterForm";
 import TournamentsList from "./lists/TournamentsList";
 import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
@@ -52,6 +53,10 @@ const tournaments = getListOfTournaments();
     {
         path: "/tournaments/details/:tournamentId",
         element: <TournamentDetails />,
+    },
+    {
+        path: "/register",
+        element: <RegisterForm/>,
     },
 ]);
 
