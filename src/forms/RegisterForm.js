@@ -43,7 +43,7 @@ function RegisterForm() {
             };
 
     try {
-        const response = await fetch('http://localhost/api/Player/register', { // !!!! IMPORTANT CROS PROBLEM !!!!
+        const response = await fetch('http://localhost:8080/api/Player/register', { // !!!! IMPORTANT CROS PROBLEM !!!!
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -52,19 +52,14 @@ function RegisterForm() {
         });
 
         if (response.status === 201 || response.status === 200) {
-            // If the response is successful, you can assume the registration worked
-            const data = await response.json(); // Parse the JSON payload of the response
+            const data = await response.json();
             console.log('User registered:', data);
-
-            // Optionally, redirect the user to a login page or dashboard
-            // For example: window.location.href = '/dashboard';
+            
         } else {
-            // If the response status code is not successful, handle it accordingly
-            const error = await response.json(); // Assuming the server sends a JSON response with an error message
+            const error = await response.json();
             throw new Error(error.message || 'Registration failed.');
         }
     } catch (error) {
-        // Handle any errors that occurred during the fetch
         console.error('Registration error:', error);
         alert('Registration failed: ' + error.message);
     }
