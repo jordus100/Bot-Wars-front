@@ -1,6 +1,6 @@
 import './AddGameForm.scss'
 import './Form.scss'
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 function RegisterForm() {
     const [name, setName] = useState('');
@@ -8,6 +8,7 @@ function RegisterForm() {
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(true);
+
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
@@ -23,74 +24,120 @@ function RegisterForm() {
         setPasswordsMatch(e.target.value === password);
       };
 
-    return (
-        <div className="add-game-form">
-            <div className="form">
-                <h1>Register</h1>
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={name}
-                            onChange={e => setName(e.target.value)}
-                            placeholder="Enter your username"
-                            maxLength="30"
-                        />
-                    </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
-                            required
-                        />
+        if (password !== repeatPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
 
-                    </div>
+        // Construct the request payload
+        const payload = {
+            email: email,
+            login: name,
+            password: password, 
+            roleId: 1,
+            isBanned: false, 
+            points: 0
+            };
 
-                    <div className="form-group ">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder="Enter your password"
-                            minLength="8" // Set minimum length for password
-                            required
-                        />
+    try {
+        const response = await fetch('http://localhost/api/Player/register', { // !!!! IMPORTANT CROS PROBLEM !!!!
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+        });
 
-                    </div>
+        if (response.status === 201 || response.status === 200) {
+            // If the response is successful, you can assume the registration worked
+            const data = await response.json(); // Parse the JSON payload of the response
+            console.log('User registered:', data);
 
-                    <div className="form-group ">
-                        <label htmlFor="repeatPassword">Repeat password</label>
-                        <input
-                            type="password"
-                            id="repeatPassword"
-                            value={repeatPassword}
-                            onChange={handleRepeatPasswordChange}
-                            placeholder="Repeat your password"
-                            required
-                        />
+            // Optionally, redirect the user to a login page or dashboard
+            // For example: window.location.href = '/dashboard';
+        } else {
+            // If the response status code is not successful, handle it accordingly
+            const error = await response.json(); // Assuming the server sends a JSON response with an error message
+            throw new Error(error.message || 'Registration failed.');
+        }
+    } catch (error) {
+        // Handle any errors that occurred during the fetch
+        console.error('Registration error:', error);
+        alert('Registration failed: ' + error.message);
+    }
+};
 
-                    </div>
+return (
+    <div className="add-game-form">
+        <div className="form">
+            <h1>Register</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        placeholder="Enter your username"
+                        maxLength="30"
+                    />
+                </div>
 
-                    {!passwordsMatch && <p style={{ color: 'red' }}>Passwords do not match</p>}
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                    />
 
-                    <div className="form-group actions">
-                    {passwordsMatch && <button type="submit" className="submit">Register</button>}
-                        
-                        <button type="button" className="cancel">Cancel</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+
+                <div className="form-group ">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={handlePasswordChange} // Not the best way to handle those passwords :/
+                        placeholder="Enter your password"
+                        minLength="8" // Set minimum length for password
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group ">
+                    <label htmlFor="repeatPassword">Repeat password</label>
+                    <input
+                        type="password"
+                        id="repeatPassword"
+                        value={repeatPassword}
+                        onChange={handleRepeatPasswordChange}
+                        placeholder="Repeat your password"
+                        required
+                    />
+
+                </div>
+
+                {!passwordsMatch && <p style={{ color: 'red' }}>Passwords do not match</p>}
+
+                <div className="form-group actions">
+                {passwordsMatch && <button type="submit" className="submit">Register</button>}
+                    
+                    <button type="button" className="cancel">Cancel</button>
+                </div>
+            </form>
         </div>
-    )
+    </div>
+)
 }
 
 export default RegisterForm
