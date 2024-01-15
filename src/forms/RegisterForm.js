@@ -61,7 +61,6 @@ function RegisterForm() {
                 } else {
                     const text = await response.text();
                     console.error('Non-JSON response received:', text);
-                    // Handle non-JSON responses here, possibly an HTML error page
                 }
             } else {
                 // Non-2xx response, handle error
@@ -111,9 +110,9 @@ function RegisterForm() {
                             type="password"
                             id="password"
                             value={password}
-                            onChange={handlePasswordChange} // Not the best way to handle those passwords :/
+                            onChange={handlePasswordChange}
                             placeholder="Enter your password"
-                            minLength="8" // Set minimum length for password
+                            minLength="2" // change (just for development)
                             required
                         />
 
