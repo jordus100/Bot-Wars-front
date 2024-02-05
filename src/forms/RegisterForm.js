@@ -1,6 +1,7 @@
 import './AddGameForm.scss'
 import './Form.scss'
 import React, { useState } from "react";
+import {UserService} from "../services/UserService";
 
 function RegisterForm() {
     const [name, setName] = useState('');
@@ -8,69 +9,26 @@ function RegisterForm() {
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [message, setMessage] = useState(true);
 
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-
-        // Check if passwords match and update passwordsMatch state
         setPasswordsMatch(e.target.value === repeatPassword);
     };
 
     const handleRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value);
-
-        // Check if passwords match and update passwordsMatch state
         setPasswordsMatch(e.target.value === password);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (password !== repeatPassword) {
-            alert('Passwords do not match.');
-            return;
-        }
-
-        // Construct the request payload
-        const payload = {
-            email: email,
-            login: name,
-            password: password,
-            roleId: 1,
-            isBanned: false,
-            points: 0
-        };
-
         try {
-            const response = await fetch('http://localhost:8080/api/Player/register', { // !!!! << solution IMPORTANT CROS PROBLEM !!!!
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            });
-
-            const contentType = response.headers.get('content-type');
-
-            if (response.ok) {
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const data = await response.json();
-                    console.log('User registered:', data);
-                    // Handle success here
-                } else {
-                    const text = await response.text();
-                    console.error('Non-JSON response received:', text);
-                }
-            } else {
-                // Non-2xx response, handle error
-                const errorText = await response.text();
-                console.error('Registration error:', errorText);
-                alert('Registration failed. Please try again.');
-            }
-        } catch (error) {
-            console.error('Network error or other issue:', error);
-            alert('Registration failed due to a network error or server issue.');
+            await UserService.registerUser(name, email, password, 1)
+        } catch (e) {
+            setMessage('There was a problem with the registration.')
         }
     };
 
@@ -140,6 +98,7 @@ function RegisterForm() {
                     </div>
                 </form>
             </div>
+            <p>{message}</p>
         </div>
     )
 }
