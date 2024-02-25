@@ -10,6 +10,7 @@ import {
 import GamesList from "./lists/GamesList";
 import AddGameForm from "./forms/AddGameForm";
 import RegisterForm from "./forms/RegisterForm";
+import LoginForm from "./forms/LoginForm";
 import TournamentsList from "./lists/TournamentsList";
 import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
@@ -57,6 +58,10 @@ const tournaments = getListOfTournaments();
     {
         path: "/register",
         element: <RegisterForm/>,
+    },
+    {
+        path: "/login",
+        element: <LoginForm/>,
     },
 ]);
 
