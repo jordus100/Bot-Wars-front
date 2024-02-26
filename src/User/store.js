@@ -1,5 +1,7 @@
 // store.js
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage/session'; // Use sessionStorage
 
 const initialState = {
   isAuthenticated: false,
@@ -25,6 +27,19 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(authReducer);
+// Configuration for redux-persist using sessionStorage
+const persistConfig = {
+  key: 'root',
+  storage, // Use sessionStorage
+};
+
+// Wrap the reducer with redux-persist
+const persistedReducer = persistReducer(persistConfig, authReducer);
+
+// Create store with persisted reducer
+const store = createStore(persistedReducer);
+
+// Create a persistor object
+export const persistor = persistStore(store);
 
 export default store;
