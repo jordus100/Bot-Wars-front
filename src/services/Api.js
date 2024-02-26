@@ -8,20 +8,8 @@ export const Api = axios.create({
     withCredentials: true
 })
 
-const req = {
-    "playerId" : 12,
-    "lala": "lulu",
-    "tournament": "tour",
-    "acivments": "dupa"
-}
-
-const apifunc = {
-    "params": ["playerId", "lala"],
-    "body": ["acivments"],
-}
-
 function prepareParams(data, params) {
-    if (params.length == 0) {
+    if (params === undefined || params.length == 0) {
         return ""
     }
     for (var i = 0; i < params.length; i++) {
@@ -47,7 +35,7 @@ function prepareBody(data, body) {
     }
     
     const dictionary = {};
-    for (const key of apifunc["body"]) {
+    for (const key of body) {
         if (data.hasOwnProperty(key)) {
             dictionary[key] = data[key];
         }
@@ -56,8 +44,7 @@ function prepareBody(data, body) {
     return dictionary
 }
 
-function Request(data, apifunc) {
-    console.log(apifunc)
+function Request(data, endpoint, apifunc) {
     const path = apifunc["path"];
     const method = apifunc["method"];
     const params = apifunc["params"];
@@ -66,40 +53,45 @@ function Request(data, apifunc) {
     const reqParams = prepareParams(data, params);
     const reqBody = prepareBody(data, body);
 
-    const url = path + reqParams;
-    if (method == "GET") {
-        return Api.get(url)
-    } else if (method == "POST") {
-        return Api.post(url, reqBody)
-    } else if (method == "PUT") {
-        return Api.put(url, reqBody)
-    } else if (method == "DELETE") {
-        return Api.delete(url)
-    }
+    console.log(reqParams)
+    const h = { 
+        "accept": "*/*"
+    };
+
+    const url = c["urls"][endpoint]["path"] + path + reqParams;
+    return Api({
+            method: method,
+            url: url,
+            data: reqBody,
+            headers: h
+        })
 }
 
 const achivments = c["urls"]["achivments"]
 const gametype = c["urls"]["gametype"]
 const player = c["urls"]["player"]
-const team = c["urls"]["points"]
+const points = c["urls"]["points"]
 const tournament = c["urls"]["tournament"]
 const userSettings = c["urls"]["userSettings"]
 
 function getAcivmentsForPlayer(request) {
-    console.log(achivments)
-    return Request(request, achivments["functions"]["GetAchivmentsForPlayer"])
+    return Request(request, "achivments", achivments["functions"]["GetAchivmentsForPlayer"])
 }
 
-const req1 = {playerId: 1}
-getAcivmentsForPlayer(req1)
-    .then((response) => {
-        console.log(response)
+function getTournaments(request) {
+    Request(request, "tournament", tournament["functions"]["GetAllTournaments"])
+    .then((res) => {
+        return res.data
+    }).catch((err) => {
+        console.log(err)
     })
-    .catch((error) => {
-        console.log(error)
-    })
+}
 
 Api.processError = (err) => {
     throw Error(err.message)
 }
 
+
+export {
+    getTournaments,
+}

@@ -1,11 +1,11 @@
 {
     "protocol": "http",
-    "host": "localhost",
+    "host": "10.147.17.20",
     "port": 8080,
-    "path": "/",
+    "path": "api/",
     "version": "v1",
     "urls": {
-        "achievements": {
+        "achivments": {
             "path": "/Achievements",
             "functions":{
                 "GetAchivmentsForPlayer": {
@@ -45,7 +45,7 @@
         },
         "player" : {
             "path": "/Player",
-            "function": {
+            "functions": {
                 "registerPlayer": {
                     "path": "/register",
                     "method": "POST",
@@ -60,7 +60,7 @@
         },
         "points" : {
             "path": "/Points",
-            "function": {
+            "functions": {
                 "GetPointsForPlayer": {
                     "path": "/getPointsForPlayer",
                     "method": "GET",
@@ -79,7 +79,7 @@
         },
         "tournament": {
             "path": "/Tournament",
-            "function": {
+            "functions": {
                 "AddTournament": {
                     "path": "/add",
                     "method": "POST",
@@ -123,7 +123,7 @@
         },
         "userSettings": {
             "path": "/UserSettings",
-            "function": {
+            "functions": {
                 "AddUserSettings": {
                     "path": "/createForPlayer",
                     "method": "POST",
