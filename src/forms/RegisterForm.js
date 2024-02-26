@@ -24,9 +24,9 @@ function RegisterForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             await UserService.registerUser(name, email, password, 1)
+            setMessage('Registered successfully')
         } catch (e) {
             setMessage('There was a problem with the registration.')
         }
