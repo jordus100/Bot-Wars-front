@@ -5,16 +5,16 @@
     "path": "api/",
     "version": "v1",
     "urls": {
-        "achievements": {
+        "achivments": {
             "path": "/Achievements",
             "functions":{
-                "GetachievementsForPlayer": {
-                    "path": "/getachievementsForPlayer",
+                "GetAchivmentsForPlayer": {
+                    "path": "/getAchivmentsForPlayer",
                     "method": "GET",
                     "params": ["playerId"]
                 },
-                "GetachievementTypes": {
-                    "path": "/getachievementTypes",
+                "GetAchivmentTypes": {
+                    "path": "/getAchivmentTypes",
                     "method": "GET"
                 }
             }   

@@ -16,7 +16,6 @@ import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
 import ProfileView from "./User/ProfileView/ProfileView";
-import About from "./about.js";
 import { Provider } from 'react-redux';
 import store from './User/store';
 import { getListOfTournaments } from './Tournaments/getListOfTournaments';
