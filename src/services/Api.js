@@ -1,6 +1,6 @@
 import axios from "axios";
 export const Api = axios.create({
-    baseURL: 'api/',
+    baseURL: 'api/v1/',
     withCredentials: true
 })
 
