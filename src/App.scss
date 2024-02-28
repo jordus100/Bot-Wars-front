@@ -12,9 +12,10 @@
 
   .title {
     overflow: auto;
+    padding: 10px;
   }
 
-  .login-btn {
+  .login-btns {
     float: right;
   }
 
@@ -39,5 +40,9 @@
     .menu-btn {
       width: 100%
     }
+  }
+
+  .login-btn {
+    width: 100%;
   }
 }

@@ -5,28 +5,20 @@ import {Link} from "react-router-dom";
 
 function User({ isAuthenticated, user, login, logout }) {
     return (
-      <div>
+        <>
         {isAuthenticated ? (
           <button onClick={logout}>Logout</button>
         ) : (
-          <>
-          <button>
-          <Link to="login">
-              Login
+        <>
+          <Link to="index.html">
+              <button className="login-btn">Login</button>
           </Link>
-          </button>
-
-          <button>
-          <Link to="register">
-            Register
+          <Link to="index.html">
+              <button className="login-btn">Register</button>
           </Link>
-          </button>
-          <button onClick={() => login({ username: 'exampleUser' })}>
-            test
-          </button>
         </>
         )}
-      </div>
+        </>
     );
   }
 

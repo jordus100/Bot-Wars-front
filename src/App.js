@@ -7,7 +7,7 @@ function App() {
         <div className="app">
             <div className="title">
                 <h1>Bot-Wars</h1>
-                <div className="login-btn">
+                <div className="login-btns">
                     <User isLoggedIn={false}/>
                 </div>
             </div>
