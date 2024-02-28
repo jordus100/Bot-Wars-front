@@ -5,11 +5,13 @@ import ProfileInfoTable from './ProfileInfoTable';
 import ProfileInfoTableAchivments from './ProfileInfoTableAchivments';
 
 import './ProfileView.css';
+import ProfileInfoTableButtons from './ProfileInfoTableButtons';
 
 
 function ProfileView() {
     const { id } = useParams();
     const [user, setUser] = useState({});
+    const [state, setState] = useState("stats");
     const myID = 1;
 
 
@@ -20,32 +22,35 @@ function ProfileView() {
 
     return (<>
         <div className='main-container'>
-            <div className='row1col1'> 
+            <div className='cell row1col1'> 
                 <div className='widget user-photo'>
                     <img className='profile-image' src={user.photoURL} alt='user-photo'/>
                 </div>
             </div>
-            <div className='row1col2'>
+            <div className='cell row1col2'>
                 <div className='widget user-overview'>
                     <div className='user-overview-container'>
                         <p>{user.nickname}</p>            
                         <p>{user.points}</p>
                     </div>
                 </div>
+                <div className='widget user-achivments'>
+                    <ProfileInfoTableAchivments userId={user.playerid}/>
+                </div>
             </div>
-            <div className='row2col1'>
+            <div className='cell row2col1'>
                 {id == myID ? 
                     <a className='change-photo' href='/'>Change photo</a> 
                     : 
                     <></>
                     }
             </div>
-            <div className='row2col2'>
-                <div className='widget user-achivments'>
-                    <ProfileInfoTableAchivments userId={user.playerid}/>
+            <div className='cell row2col2'>
+                <div className='widget user-info-table-buttons'>
+                    <ProfileInfoTableButtons setState={setState}/>
                 </div>
             </div>
-            <div className='row3col1'>
+            <div className='cell row3col1'>
                 <div className='widget user-info'> 
                     <p>Member since: {user.joined}</p>
                     <p>Last seen: {user.lastseen}</p>
@@ -56,9 +61,9 @@ function ProfileView() {
                     <button className='settings-button'>User Settings</button>
                 </div>
             </div>
-            <div className='row3col2'>        
+            <div className='cell row3col2'>        
                 <div className='widget user-info-table-container'>
-                    <ProfileInfoTable user={user}/>    
+                    <ProfileInfoTable user={user} state={state}/>    
                 </div>
             </div>
         </div>    

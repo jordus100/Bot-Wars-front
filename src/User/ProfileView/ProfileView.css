@@ -1,8 +1,8 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: min-content min-content 100%;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: min-content min-content auto;
     align-items: start;
 
     justify-items: stretch;
@@ -36,20 +36,31 @@
 
 .user-info-table-container {
     border: 3px solid black;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
-    text-align: start;
+    
+    height: 100%;
 }
 
+.user-info-table-buttons {
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.user-info-table-buttons-container {
+    
+}
 
 .user-overview {
-    
+    height: 100%;
 }
 
 .user-overview-container {
     width: fit-content;
     position: relative;
     margin-left: auto;
+
+    display: flex;
 }
 
 .widget {
@@ -58,7 +69,14 @@
 
 .settings-button {
     width: 100%;
+    align-self: flex-end;
+
     bottom: 0;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
 }
 
 .user-achivments {
