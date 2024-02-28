@@ -1,0 +1,81 @@
+
+.main-container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: min-content min-content 100%;
+    align-items: start;
+
+    justify-items: stretch;
+    align-content: stretch;
+    height: 100%;
+}
+
+.user-photo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.profile-image {
+    border: 3px solid black;
+    border-radius: 1px;
+}
+
+.change-photo {
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-info {
+    font-size: 20px;
+    border: 3px solid black;
+    padding: 10px;
+    height: 100%;
+}
+
+.user-info-table-container {
+    border: 3px solid black;
+    padding: 10px;
+    margin: 20px;
+    text-align: start;
+}
+
+
+.user-overview {
+    
+}
+
+.user-overview-container {
+    width: fit-content;
+    position: relative;
+    margin-left: auto;
+}
+
+.widget {
+    margin: 10px;   
+}
+
+.settings-button {
+    width: 100%;
+    bottom: 0;
+}
+
+.user-achivments {
+    padding: 10px;
+    border: 3px solid black;
+    align-items: right;
+}
+
+img { 
+    max-width:100%;
+}
+
+p {
+    margin: 0;
+}
+
+body, html {
+    width: 100vw; 
+    height: 100vh; 
+}
