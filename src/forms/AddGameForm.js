@@ -1,17 +1,31 @@
 import './AddGameForm.scss'
 import './Form.scss'
 import React, {useState} from "react";
+import {GameService} from "../services/GameService";
 
-function AddGameForm() {
+function AddGameForm({isAuthenticated, user, login, logout}) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [file, setFile] = useState('');
+    const [message, setMessage] = useState(true);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            console.log(name,description)
+            const response = await GameService.addGameType(10,name,description,"string",true)
+            setMessage('Game added succesfully')
+        } catch (e) {
+            setMessage('There was a problem with adding game.')
+        }
+    };
 
     return (
         <div className="add-game-form">
             <div className="form">
                 <h1>Add a new type of game</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="title">Name:</label>
                         <input
@@ -59,6 +73,7 @@ function AddGameForm() {
                         separated by commas, named: <i>interface</i></li>
                 </ul>
             </p>
+            <p>{message}</p>
         </div>
     )
 }
