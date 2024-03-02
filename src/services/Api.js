@@ -9,7 +9,7 @@ export const Api = axios.create({
 })
 
 function prepareParams(data, params) {
-    if (params === undefined || params.length == 0) {
+    if (params === undefined || params.length === 0) {
         return ""
     }
     for (var i = 0; i < params.length; i++) {
@@ -24,7 +24,7 @@ function prepareParams(data, params) {
 }
 
 function prepareBody(data, body) {
-    if (body === undefined || body.length == 0) {
+    if (body === undefined || body.length === 0) {
         return {}
     }
 
@@ -68,11 +68,11 @@ function Request(data, endpoint, apifunc) {
 }
 
 const achivments = c["urls"]["achivments"]
-const gametype = c["urls"]["gametype"]
-const player = c["urls"]["player"]
-const points = c["urls"]["points"]
+//const gametype = c["urls"]["gametype"]
+//const player = c["urls"]["player"]
+//const points = c["urls"]["points"]
 const tournament = c["urls"]["tournament"]
-const userSettings = c["urls"]["userSettings"]
+//const userSettings = c["urls"]["userSettings"]
 
 function getAcivmentsForPlayer(request) {
     return Request(request, "achivments", achivments["functions"]["GetAchivmentsForPlayer"])
@@ -87,6 +87,65 @@ function getTournaments(request) {
     })
 }
 
+function getPointsOfHistoryForPlayer(request) {
+    //return Request(request, "points", points["functions"]["GetPointsOfHistoryForPlayer"])
+
+    return {
+        "data": [
+          {
+            "id": 1,
+            "logDate": "2024-02-06T19:21:17.85",            
+            "rating": 12,
+            "playerId": 1
+          },
+          {
+            "id": 2,
+            "logDate": "2024-02-07T19:21:17.85",            
+            "rating": 20,
+            "playerId": 1
+          },
+          {
+            "id": 3,
+            "logDate": "2024-02-08T19:21:17.85",            
+            "rating": 30,
+            "playerId": 1
+          },
+          {
+            "id": 4,
+            "logDate": "2024-02-09T19:21:17.85",            
+            "rating": 40,
+            "playerId": 1
+          },
+          {
+            "id": 5,
+            "logDate": "2024-02-10T19:21:17.85",            
+            "rating": 50,
+            "playerId": 1
+          },
+          {
+            "id": 6,
+            "logDate": "2024-02-11T19:21:17.85",            
+            "rating": 60,
+            "playerId": 1
+          }
+        ]
+      }
+}
+
+function getUser(request){
+    //return Request(request, "userSettings", userSettings["functions"]["GetUser"])
+
+    return {
+        "id": request["playerId"],
+        "login": "RdmusR_97",
+        "rating": 1203,
+        "lastSeen": "2024-02-11T19:21:17.85",
+        "joined": "2024-02-06T19:21:17.85",
+        "photoURL": "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1709386522~exp=1709387122~hmac=612506df2e857afd82d8b64b5b44128ef42d1e046876d26074bb46b41abe1fb0"
+    }
+        
+}
+
 Api.processError = (err) => {
     throw Error(err.message)
 }
@@ -94,4 +153,8 @@ Api.processError = (err) => {
 
 export {
     getTournaments,
+    getAcivmentsForPlayer,
+    getPointsOfHistoryForPlayer,
+    getUser,
+
 }
