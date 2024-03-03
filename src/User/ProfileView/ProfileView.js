@@ -30,8 +30,8 @@ function ProfileView() {
             <div className='cell row1col2'>
                 <div className='widget user-overview'>
                     <div className='user-overview-container'>
-                        <p>{user.nickname}</p>            
-                        <p>{user.points}</p>
+                        <p>{user.login}</p>   
+                        <p>{user.rating}</p>
                     </div>
                 </div>
                 <div className='widget user-achivments'>
