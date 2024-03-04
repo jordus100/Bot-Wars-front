@@ -27,10 +27,9 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-// Configuration for redux-persist using sessionStorage
 const persistConfig = {
   key: 'root',
-  storage, // Use sessionStorage
+  storage, 
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
