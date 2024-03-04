@@ -10,10 +10,10 @@ function User({ isAuthenticated, user, login, logout }) {
           <button onClick={logout}>Logout</button>
         ) : (
         <>
-          <Link to="index.html">
+          <Link to="/login">
               <button className="login-btn">Login</button>
           </Link>
-          <Link to="index.html">
+          <Link to="/register">
               <button className="login-btn">Register</button>
           </Link>
         </>
