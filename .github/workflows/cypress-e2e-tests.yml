@@ -8,11 +8,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.0.9
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: docker compose -f docker-compose-all.yml up & wait-on http://localhost:8080/swagger/index.html
+          start: docker compose -f docker-compose-all.yml up
+          wait-on: http://localhost:8080/swagger/index.html
           browser: chrome
           config: baseUrl=http://localhost
