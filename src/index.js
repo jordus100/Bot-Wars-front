@@ -19,6 +19,7 @@ import ProfileView from "./User/ProfileView/ProfileView";
 import { Provider } from 'react-redux';
 import store from './User/store';
 import { getListOfTournaments } from './Tournaments/getListOfTournaments';
+import UserSettings from './User/Settings/UserSettings';
 
 const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginForm/>,
     },
+    {
+        path: "/settings",
+        element: <UserSettings/>,
+    }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
