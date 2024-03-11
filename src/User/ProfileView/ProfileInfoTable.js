@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {getPointsOfHistoryForPlayer} from "../../services/Api";
-import {XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line  } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, ResponsiveContainer } from 'recharts';
 
 function StatsTable(props) {
     return (
@@ -23,18 +23,27 @@ function RatingTable(props) {
     const [history, setHistory] = useState([{id: 0, logDate: "", points: 0, playerId: 0}]);
     
     useEffect(() => {
-        setHistory(getPointsOfHistoryForPlayer(props.playerid)["data"]);
+        var points = getPointsOfHistoryForPlayer(props.playerid);
+        console.log(points);
+        points = points['data'].map((point) => {
+            point["logDate"] = point["logDate"].substring(0, 10);
+            return point;
+        });
+        console.log(points);
+        setHistory(points);
     }, [props.playerid]);
 
+    var ticksize = 20;
     const chart = 
-        <LineChart data={history} width={1000} height={300}>
-            <CartesianGrid />
-            <Tooltip />
-            <XAxis dataKey="logDate" />
-            <YAxis dataKey="rating"  />
-            <Line type="linear" dataKey="rating" stroke="#01FF00" fill="#01FF00" /> 
-        </LineChart>;
-
+        <ResponsiveContainer height={300}>
+            <LineChart data={history}>
+                <CartesianGrid/>
+                <Tooltip />
+                <XAxis dataKey="logDate" tick={{fontSize: ticksize}} />
+                <YAxis dataKey="rating" tick={{fontSize: ticksize}} />
+                <Line type="linear" dataKey="rating" stroke="#01FF00" fill="#01FF00" /> 
+            </LineChart>
+        </ResponsiveContainer>
         console.log(history);
 
     return (
