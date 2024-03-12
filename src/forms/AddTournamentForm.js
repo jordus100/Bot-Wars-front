@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './Form.scss';
 import { connect } from 'react-redux';
 import { login, logout } from '../User/actions';
+import {TournamentService} from "../services/TournamentService";
+
 
 function AddTournamentForm({isAuthenticated, user, login, logout }) {
 
@@ -18,6 +20,19 @@ function AddTournamentForm({isAuthenticated, user, login, logout }) {
         return <div>Resource not allowed :( </div>;
     }
     // Handle form submissions and updates here
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         console.log(title,description)
+    //         const response = await TournamentService.addTournament(10,title,description,"string",true)
+    //         setMessage('Tournament added succesfully')
+    //     } catch (e) {
+    //         setMessage('There was a problem with adding game.')
+    //     }
+    // };
 
     return (
         <div className="form">
