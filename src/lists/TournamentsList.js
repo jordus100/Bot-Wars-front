@@ -4,6 +4,8 @@ import TournamentNav from '../Tournaments/TournamentNav';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {TournamentService} from "../services/TournamentService";
+import React, { useState, useEffect } from "react";
+
 
 
 function TournamentsList({ tournaments, isAuthenticated }) {
