@@ -1,38 +1,71 @@
-import './List.scss';
+import './TournamentList.scss';
 import DeleteTournamentButton from './DeleteTournamentButton';
-import {Link, useNavigate} from 'react-router-dom';
+import TournamentNav from '../Tournaments/TournamentNav';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function TournamentsList({ tournaments, isAuthenticated }) {
     const navigate = useNavigate();
+    const currentDate = new Date();
+    const upcomingTournaments = tournaments.filter(t => {
+      const tournamentDate = new Date(t.date);
+      return tournamentDate > currentDate;
+    });
+    const pastTournaments = tournaments.filter(t => {
+      const tournamentDate = new Date(t.date);
+      return tournamentDate <= currentDate;
+    });;
+
+    const TournamentItem = ({ tournament }) => (
+        <div className="tournament-item" onClick={() => handleTournamentClick(tournament.id)}>
+            <div className="tournament-detail">{tournament.name}</div>
+            <div className="tournament-detail">{tournament.author}</div>
+            <div className="tournament-detail">{tournament.date}</div>
+            <div className="tournament-detail">
+                <DeleteTournamentButton tournamentId={tournament.id} />
+            </div>
+        </div>
+    );
 
     const handleTournamentClick = (tournamentId) => {
         navigate(`/tournaments/details/${tournamentId}`);
     };
-    
-    const listItems = tournaments.map(tournament => (
-        <div key={tournament.id} className="menu-btns list-element btn">
-            <button 
-                className="item-name color-primary-3 btn"
-                onClick={() => handleTournamentClick(tournament.id)}
-            >
-                {tournament.name}
-            </button>
-            <DeleteTournamentButton tournamentId={tournament.id}/>
-        </div>
-    ));
 
     return (
-        <div className="list">
-            <h1>Tournaments</h1>
-            <div className="menu-btns container-list">
-                <div className="item-list">
-                    {isAuthenticated ? (
-                        <div className="menu-btns list-element btn">
-                            <Link className="item-name add-btn color-primary-3" to="/tournaments/add">Dodaj turniej</Link>
-                        </div>
-                    ) : (<></>)}
-                    {listItems}
+        <div className="tournaments-container">
+
+            <TournamentNav /> 
+            
+            {isAuthenticated && (
+                <Link to="/tournaments/add" className="add-tournament-btn">Add Tournament</Link>
+            )}
+            <div className="tournaments-box">
+                <h3>Upcoming Tournaments</h3>
+
+                <div className="tournament-headers">
+                    <span className="header-detail">Name</span>
+                    <span className="header-detail">Author</span>
+                    <span className="header-detail">Date</span>
+                    <span className="header-detail">Action</span>
+                </div>
+
+                <div className="tournaments-content">
+                    {upcomingTournaments.map(tournament => (
+                        <TournamentItem key={tournament.id} tournament={tournament} />
+                    ))}
+                </div>
+                <h3>Past Tournaments</h3>
+                <div className="tournament-headers">
+                    <span className="header-detail">Name</span>
+                    <span className="header-detail">Author</span>
+                    <span className="header-detail">Date</span>
+                    <span className="header-detail">Action</span>
+                </div>
+
+                <div className="tournaments-content">
+                    {pastTournaments.map(tournament => (
+                        <TournamentItem key={tournament.id} tournament={tournament} />
+                    ))}
                 </div>
             </div>
         </div>
