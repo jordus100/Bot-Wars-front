@@ -4,7 +4,7 @@ const baseURL = c["protocol"] + "://" + c["host"] + ":" + c["port"] + "/" + c["p
 
 
 export const Api = axios.create({
-    baseURL: baseURL,
+    baseURL: '/api/v1/',
     withCredentials: true
 })
 

@@ -3,7 +3,11 @@ import './Form.scss'
 import React, { useState } from "react";
 import {UserService} from "../services/UserService";
 
-function RegisterForm() {
+import { connect } from 'react-redux';
+import { login, logout } from '../User/actions';
+
+function LoginForm({isAuthenticated, user, login, logout}) {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(true);
@@ -12,9 +16,11 @@ function RegisterForm() {
         e.preventDefault();
 
         try {
-            await UserService.loginUser(email, password)
+            const response = await UserService.loginUser(email, password)
+            login({ email: email , token: response.data.data})
+            setMessage('Login succesful.')
         } catch (e) {
-            setMessage('There was a problem with the registration.')
+            setMessage('There was a problem with login.')
         }
     };
 
@@ -61,4 +67,12 @@ function RegisterForm() {
     )
 }
 
-export default RegisterForm
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.isAuthenticated,
+    user: state.user,
+  });
+  
+const mapDispatchToProps = {login,logout,};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
