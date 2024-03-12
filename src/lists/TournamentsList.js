@@ -1,20 +1,41 @@
 import './TournamentList.scss';
 import DeleteTournamentButton from './DeleteTournamentButton';
 import TournamentNav from '../Tournaments/TournamentNav';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {TournamentService} from "../services/TournamentService";
+
 
 function TournamentsList({ tournaments, isAuthenticated }) {
     const navigate = useNavigate();
     const currentDate = new Date();
-    const upcomingTournaments = tournaments.filter(t => {
-      const tournamentDate = new Date(t.date);
-      return tournamentDate > currentDate;
+
+    const [tournamentList, setTournamentList] = useState([]);
+    const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        const fetchTournamentData = async () => {
+            try {
+                const gl = await TournamentService.getListOfTournaments();
+                setTournamentList(gl.data.data);
+            } catch (e) {
+                console.log(e);
+                setMessage('Sorry, there was a problem with fetching tournament data.Try again later');
+            }
+        };
+
+        fetchTournamentData();
+    }, []);
+
+    const upcomingTournaments = tournamentList.filter(t => {
+        const tournamentDate = new Date(t.date);
+        return tournamentDate > currentDate;
     });
-    const pastTournaments = tournaments.filter(t => {
-      const tournamentDate = new Date(t.date);
-      return tournamentDate <= currentDate;
+    const pastTournaments = tournamentList.filter(t => {
+        const tournamentDate = new Date(t.date);
+        return tournamentDate <= currentDate;
     });;
+
 
     const TournamentItem = ({ tournament }) => (
         <div className="tournament-item" onClick={() => handleTournamentClick(tournament.id)}>
@@ -34,13 +55,11 @@ function TournamentsList({ tournaments, isAuthenticated }) {
     return (
         <div className="tournaments-container">
 
-            <TournamentNav /> 
-            
-            {isAuthenticated && (
-                <Link to="/tournaments/add" className="add-tournament-btn">Add Tournament</Link>
-            )}
+            <TournamentNav />
+
+
             <div className="tournaments-box">
-                <h3>Upcoming Tournaments</h3>
+                <h1>Upcoming Tournaments</h1>
 
                 <div className="tournament-headers">
                     <span className="header-detail">Name</span>
@@ -54,7 +73,7 @@ function TournamentsList({ tournaments, isAuthenticated }) {
                         <TournamentItem key={tournament.id} tournament={tournament} />
                     ))}
                 </div>
-                <h3>Past Tournaments</h3>
+                <h1>Past Tournaments</h1>
                 <div className="tournament-headers">
                     <span className="header-detail">Name</span>
                     <span className="header-detail">Author</span>
@@ -68,6 +87,8 @@ function TournamentsList({ tournaments, isAuthenticated }) {
                     ))}
                 </div>
             </div>
+
+            <p>{message}</p>
         </div>
     );
 }

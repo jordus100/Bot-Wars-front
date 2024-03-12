@@ -1,3 +1,5 @@
+@import '../index';
+
 .tournaments-container {
     display: flex;
     flex-direction: column;
@@ -23,11 +25,11 @@
         border-radius: 8px;
         background-color: #242424;
 
-        h3 {
+        h1 {
             text-align: left;
-            color: #4CAF50;;
             margin: 0.5em 0.25em; 
             padding-top: 0.7em;
+            font-size: 0.8em;
         }
 
         .tournament-headers {
