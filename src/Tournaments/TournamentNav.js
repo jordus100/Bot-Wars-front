@@ -1,4 +1,3 @@
-import React from 'react';
 import './TournamentNav.scss';
 import React, { useState } from "react";
 import { NavLink, Link } from 'react-router-dom';
@@ -6,7 +5,7 @@ import { login, logout } from '../User/actions';
 import { connect } from 'react-redux';
 
 
-function TournamentNav(isAuthenticated) {
+function TournamentNav({isAuthenticated}) {
     return (
         <>
             <div className="user-info-strip">
@@ -31,13 +30,13 @@ function TournamentNav(isAuthenticated) {
 
                     </NavLink>
 
-                    if (isAuthenticated) {
+                    {isAuthenticated && (
                         <NavLink className="menu-btn" activeClassName="active" to="/tournaments/add">
 
                             <button className="btn">Add Tournament</button>
 
                         </NavLink>
-                    }
+                    )}
 
                     <NavLink className="menu-btn" activeClassName="active" to="/tournaments/help">
 
