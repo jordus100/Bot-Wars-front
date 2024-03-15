@@ -1,6 +1,8 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import './TournamentNav.scss';
+import React, { useState } from "react";
+import { NavLink, Link } from 'react-router-dom';
+import { login, logout } from '../User/actions';
 import { connect } from 'react-redux';
 
 
@@ -29,13 +31,14 @@ function TournamentNav(isAuthenticated) {
 
                     </NavLink>
 
-                    {isAuthenticated && (
+                    if (isAuthenticated) {
                         <NavLink className="menu-btn" activeClassName="active" to="/tournaments/add">
 
                             <button className="btn">Add Tournament</button>
 
                         </NavLink>
-                    )}
+                    }
+
                     <NavLink className="menu-btn" activeClassName="active" to="/tournaments/help">
 
                         <button className="btn">Help</button>
@@ -54,5 +57,6 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.isAuthenticated,
 });
 
+const mapDispatchToProps = { login, logout, };
 
-export default connect(mapStateToProps)(TournamentNav);
+export default connect(mapStateToProps, mapDispatchToProps)(TournamentNav);

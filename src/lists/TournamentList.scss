@@ -11,7 +11,7 @@
         justify-content: space-between;
         margin: 10px 0;
         padding: 10px;
-        border-bottom: 2px solid #e0e0e0;
+        border-bottom: 2px solid #393a39;
         background-color: #4CAF50; 
         color: white; 
         font-size: 1em; 
@@ -38,7 +38,7 @@
             padding: 10px;
             margin-bottom: 10px;
             // background-color: #f5f5f5; 
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid #393a39;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -47,11 +47,11 @@
             text-align: center;
             font-weight: bold;
             font-size: 0.9em;
-            border-right: 2px solid #e0e0e0;
+            border-right: 2px solid #393a39;
             font-family: Arial, Helvetica, sans-serif;
             text-shadow: none;
             letter-spacing: 1px;
-            color: darken(#ffffff, 25%);
+            color: rgb(57 185 31);
             padding: 0.6em;
 
             // &:first-child {
@@ -65,7 +65,7 @@
         }
 
         .tournaments-content {
-            border: 2px solid #e0e0e0;
+            border: 2px solid #393a39;
             margin-bottom: 20px;
             padding: 10px;
             font-family: Arial, Helvetica, sans-serif;
@@ -75,20 +75,21 @@
                 justify-content: space-between;
                 margin: 10px 0;
                 padding: 10px;
-                border-bottom: 1px solid #e0e0e0;
+                border-bottom: 1px solid #393a39;
                 font-size: 0.2em;
-                color: white;
+                color: rgb(57 185 31);
+                cursor: pointer;
 
                 &:last-child {
                     border-bottom: none;
                 }
 
                 &:nth-child(2n) {
-                    background-color: darken(#242424, 5%); // Darkens the color by 5%
+                    background-color: darken(#242424, 5%); 
                 }
             
                 &:nth-child(2n+1) {
-                    background-color: lighten(#242424, 5%); // Lightens the color by 5%
+                    background-color: lighten(#242424, 5%);
                 }
 
                 .tournament-detail {
@@ -113,6 +114,6 @@
     }
 
     @media (max-width: 768px) {
-        font-size: 0.8rem; // Even smaller on mobile devices for responsiveness.
+        font-size: 0.8rem; 
     }
 }

@@ -3,7 +3,7 @@ import DeleteTournamentButton from './DeleteTournamentButton';
 import TournamentNav from '../Tournaments/TournamentNav';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {TournamentService} from "../services/TournamentService";
+import { TournamentService } from "../services/TournamentService";
 import React, { useState, useEffect } from "react";
 
 
@@ -30,23 +30,20 @@ function TournamentsList({ tournaments, isAuthenticated }) {
     }, []);
 
     const upcomingTournaments = tournamentList.filter(t => {
-        const tournamentDate = new Date(t.date);
+        const tournamentDate = new Date(t.tournamentsDate);
         return tournamentDate > currentDate;
     });
     const pastTournaments = tournamentList.filter(t => {
-        const tournamentDate = new Date(t.date);
+        const tournamentDate = new Date(t.tournamentsDate);
         return tournamentDate <= currentDate;
     });;
 
-
     const TournamentItem = ({ tournament }) => (
         <div className="tournament-item" onClick={() => handleTournamentClick(tournament.id)}>
-            <div className="tournament-detail">{tournament.name}</div>
+            <div className="tournament-detail">{tournament.tournamentsTitle}</div>
             <div className="tournament-detail">{tournament.author}</div>
-            <div className="tournament-detail">{tournament.date}</div>
-            <div className="tournament-detail">
-                <DeleteTournamentButton tournamentId={tournament.id} />
-            </div>
+            <div className="tournament-detail">{tournament.tournamentsDate}</div>
+            <div className="tournament-detail">{tournament.playersLimit}</div>
         </div>
     );
 
