@@ -15,6 +15,8 @@ import TournamentsList from "./lists/TournamentsList";
 import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
+import TournamentsHelp from "./Tournaments/TournamentsHelp";
+import TournamentsLeaderboard from "./Tournaments/TournamentsLeaderboard";
 import { Provider } from 'react-redux';
 import store from './User/store';
 import { getListOfTournaments } from './Tournaments/getListOfTournaments';
@@ -48,12 +50,20 @@ const tournaments = getListOfTournaments();
         element: <EditTournamentForm />,
     },
     {
-        path: "/tournaments",
+        path: "/tournaments/home",
         element: <TournamentsList tournaments={tournaments} />,
     },
     {
         path: "/tournaments/details/:tournamentId",
         element: <TournamentDetails />,
+    },
+    {
+        path: "/tournaments/help",
+        element: <TournamentsHelp />,
+    },
+    {
+        path: "/tournaments/leaderboard",
+        element: <TournamentsLeaderboard />,
     },
     {
         path: "/register",

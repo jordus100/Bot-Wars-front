@@ -1,0 +1,64 @@
+@import '../index';
+
+.user-info-strip {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 0.5em;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .username {
+        font-size: 1.2em;
+        padding: 0 0.4em;
+        text-decoration: none;
+        color: white;
+
+    }
+
+    .score {
+        font-size: 0.9em;
+    }
+
+    .icons {
+        i {
+            margin: 0 0.5em;
+            cursor: pointer;
+        }
+    }
+}
+
+.tournament-nav {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin: 10px 0.5em;
+    padding: 10px;
+    border-top: 2px solid #e0e0e0;
+    font-size: 1.5em;
+
+    .menu-btn{
+        margin: 0 0.5em;
+        padding: 0.1em 0.2em;
+
+    }
+
+    .menu-btn.active .btn {
+        background-color: lighten(black, 5%);
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
