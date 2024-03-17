@@ -15,6 +15,7 @@ import TournamentsList from "./lists/TournamentsList";
 import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
+import About from "./about.js";
 import { Provider } from 'react-redux';
 import store from './User/store';
 import { getListOfTournaments } from './Tournaments/getListOfTournaments';
@@ -62,6 +63,10 @@ const tournaments = getListOfTournaments();
     {
         path: "/login",
         element: <LoginForm/>,
+    },
+    {
+        path: "/about",
+        element: <About/>,
     },
 ]);
 
