@@ -2,22 +2,6 @@ import { useEffect, useState } from "react";
 import {getPointsOfHistoryForPlayer} from "../../services/Api";
 import {XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, ResponsiveContainer } from 'recharts';
 
-function StatsTable(props) {
-    return (
-        <table>
-            <tr>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Draws</th>
-            </tr>
-            <tr>
-                <td>{props.wins}</td>
-                <td>{props.losses}</td>
-                <td>{props.draws}</td>
-            </tr>
-        </table>
-    );
-}
 
 function RatingTable(props) {
     const [history, setHistory] = useState([{id: 0, logDate: "", points: 0, playerId: 0}]);
@@ -94,8 +78,6 @@ function TournamentsPlayedTable(props) {
 
 function changeState(newState) {
     switch (newState) {
-        case "stats":
-            return <StatsTable wins={10} losses={5} draws={3} />;
         case "rating":
             return <RatingTable/>;
         case "bots":
