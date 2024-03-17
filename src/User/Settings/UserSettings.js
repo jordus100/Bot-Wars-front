@@ -1,13 +1,10 @@
-import {useEffect, useState} from 'react';
-import Popup            from 'reactjs-popup';
-import ChangeUsernamePopup from './ChangeUsername';
+import {useState} from 'react';
 
-
-import Switch           from '@mui/material/Switch';
-import Select           from '@mui/material/Select';
-import InputLabel       from '@mui/material/InputLabel';
-import MenuItem         from '@mui/material/MenuItem';
-import FormGroup        from '@mui/material/FormGroup';
+import Switch from '@mui/material/Switch';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import SettingPopup from './SettingPopup';
 
@@ -26,14 +23,6 @@ function updatePhoto(photo){
 
 function deleteAccount(){
   console.log("yo account was removed");
-}
-
-function saveSettings(settings){
-  console.log("yo settings ware updated");
-}
-
-function resetSettings(){
-  console.log("yo settings ware reversed");
 }
 
 function setDarkMode() {

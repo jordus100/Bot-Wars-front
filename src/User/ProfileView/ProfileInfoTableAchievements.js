@@ -1,12 +1,12 @@
 
 
-function ProfileInfoTableAchivments(props) {
+function ProfileInfoTableAchievements(props) {
     const {playerId} = props;
 
     return (
         <table>
             <tr>
-                <th>Achivments</th>
+                <th>achievements</th>
             </tr>
             <tr>
                 <td>{playerId}</td>
@@ -15,4 +15,4 @@ function ProfileInfoTableAchivments(props) {
     );
 }
 
-export default ProfileInfoTableAchivments;
+export default ProfileInfoTableAchievements;

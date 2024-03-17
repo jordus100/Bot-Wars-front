@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { getUser } from '../../services/Api';
 import ProfileInfoTable from './ProfileInfoTable';
-import ProfileInfoTableAchivments from './ProfileInfoTableAchivments';
+import ProfileInfoTableAchievements from './ProfileInfoTableAchievements';
 
 import './ProfileView.css';
 import ProfileInfoTableButtons from './ProfileInfoTableButtons';
@@ -34,12 +34,12 @@ function ProfileView() {
                         <p>{user.rating}</p>
                     </div>
                 </div>
-                <div className='widget user-achivments'>
-                    <ProfileInfoTableAchivments userId={user.playerid}/>
+                <div className='widget user-achievements'>
+                    <ProfileInfoTableAchievements userId={user.playerid}/>
                 </div>
             </div>
             <div className='cell row2col1'>
-                {id == myID ? 
+                {id === myID ?
                     <a className='change-photo' href='/'>Change photo</a> 
                     : 
                     <></>

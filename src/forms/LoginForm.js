@@ -2,7 +2,6 @@ import './AddGameForm.scss'
 import './Form.scss'
 import React, { useState } from "react";
 import {UserService} from "../services/UserService";
-
 import { connect } from 'react-redux';
 import { login, logout } from '../User/actions';
 

@@ -67,7 +67,7 @@ function Request(data, endpoint, apifunc) {
         })
 }
 
-const achivments = c["urls"]["achivments"]
+const achievements = c["urls"]["achievements"]
 //const gametype = c["urls"]["gametype"]
 //const player = c["urls"]["player"]
 //const points = c["urls"]["points"]
@@ -75,7 +75,7 @@ const tournament = c["urls"]["tournament"]
 //const userSettings = c["urls"]["userSettings"]
 
 function getAcivmentsForPlayer(request) {
-    return Request(request, "achivments", achivments["functions"]["GetAchivmentsForPlayer"])
+    return Request(request, "achievements", achievements["functions"]["GetachievementsForPlayer"])
 }
 
 function getTournaments(request) {

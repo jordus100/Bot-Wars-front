@@ -1,6 +1,3 @@
-import { act } from "react-dom/test-utils";
-
-
 export default function ChangePhotoPopup(props) {
     var {setReturn} = props;
     var updatePhoto = function(e){

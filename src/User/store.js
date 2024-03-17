@@ -1,5 +1,5 @@
 // store.js
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session'; // Use sessionStorage
 
@@ -34,7 +34,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = createStore(persistedReducer);
-
 export const persistor = persistStore(store);
 
 export default store;

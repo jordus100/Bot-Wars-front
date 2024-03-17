@@ -6,7 +6,7 @@ export default function DeleteAccountPopup(setReturn) {
         var writen = e.target[0].value;
         if (writen !== 'delete') {
             console.log("Wrong input");
-            return;
+
         } else {
             setReturn();
         }

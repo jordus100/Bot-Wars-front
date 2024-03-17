@@ -16,7 +16,6 @@ function User({ isAuthenticated, user, login, logout }) {
           <Link to="/register">
               <button className="login-btn">Register</button>
           </Link>
-
         </>
         )}
         </>

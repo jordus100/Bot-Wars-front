@@ -101,10 +101,10 @@ function changeState(newState) {
 }
 
 function ProfileInfoTable(props) {
-    const { state, user } = props;
+    const { state } = props;
     const [content, setContent] = useState(null);
     useEffect(() => {
-        var con = changeState(state);
+        const con = changeState(state);
         setContent(con);
     }, [state]);
 
