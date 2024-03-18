@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { login, logout } from '../User/actions';
 
 function LoginForm({isAuthenticated, user, login, logout}) {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(true);
@@ -73,3 +74,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {login,logout,};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
