@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {PointsService} from "./services/PointsService";
+import './leaderboard.scss'
 function Leaderboard({isAuthenticated, user, login, logout }) {
 
     const [leaderboardsList, setLeaderboardsList] = useState([]);
