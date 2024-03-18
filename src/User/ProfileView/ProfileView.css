@@ -1,0 +1,106 @@
+
+.main-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: min-content min-content 1fr;
+    align-items: start;
+
+    justify-items: stretch;
+    align-content: stretch;
+    height: 100%;
+}
+
+.user-photo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.profile-image {
+    border: 3px solid black;
+    border-radius: 1px;
+}
+
+.change-photo {
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-info {
+    font-size: 20px;
+    border: 3px solid black;
+    padding: 10px;
+    height: 100%;
+}
+
+.user-info-table-container {
+    border: 3px solid black;
+    padding: 20px;
+    margin: 20px;
+    
+    height: 100%;
+}
+
+.user-info-table-buttons {
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.user-info-table-button {
+    width: 100%;
+    display: inline;
+}
+
+.user-info-table-buttons-container {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.user-overview {
+    height: 100%;
+}
+
+.user-overview-container {
+    width: fit-content;
+    position: relative;
+    margin-left: auto;
+}
+
+.widget {
+    margin: 10px;   
+}
+
+.settings-button {
+    width: 100%;
+    align-self: flex-end;
+
+    bottom: 0;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.user-achievements {
+    bottom: 0;
+    padding: 10px;
+    border: 3px solid black;
+}
+
+img { 
+    max-width:100%;
+    bottom: 0;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+}
