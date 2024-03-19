@@ -5,10 +5,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 700px;
     height: fit-content;
 
     padding: 30px;
+    width: 650px;
 
     display: flex;
     flex-direction: column;
@@ -19,9 +19,13 @@
     box-shadow: 0 0 0.2cm #088f0f;
 }
 
-.user-setting-popup {
-    
+@media (max-width: 758px) {
+    .user-setting-popup-window {
+        width: 90%;
+        font-size:x-large;
+    }
 }
+
 
 .user-setting-popup-close-button {
     position: absolute;
