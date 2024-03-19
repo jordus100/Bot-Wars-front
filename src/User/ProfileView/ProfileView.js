@@ -22,12 +22,12 @@ function ProfileView() {
 
     return (<>
         <div className='main-container'>
-            <div className='cell row1col1'> 
+            <div className='cell row1col1 notcollapse'> 
                 <div className='widget user-photo'>
                     <img className='profile-image' src={user.photoURL} alt='user-photo'/>
                 </div>
             </div>
-            <div className='cell row1col2'>
+            <div className='cell row1col2'> 
                 <div className='widget user-overview'>
                     <div className='user-overview-container'>
                         <p>{user.login}</p>   
@@ -38,7 +38,7 @@ function ProfileView() {
                     <ProfileInfoTableAchivments userId={user.playerid}/>
                 </div>
             </div>
-            <div className='cell row2col1'>
+            <div className='cell row2col1 notcollapse'>
                 {id == myID ? 
                     <a className='change-photo' href='/'>Change photo</a> 
                     : 
@@ -50,12 +50,12 @@ function ProfileView() {
                     <ProfileInfoTableButtons setState={setState}/>
                 </div>
             </div>
-            <div className='cell row3col1'>
+            <div className='cell row3col1 notcollapse'>
                 <div className='widget user-info'> 
                     <p>Member since: {user.joined}</p>
-                    <p>Last seen: {user.lastseen}</p>
-                    <p>Bots added: #TODO#</p>
-                    <p>Tournaments created: #TODO#</p>
+                    <p>Last seen: {user.lastSeen}</p>
+                    <p>Bots added: {user.botsAdded}</p>
+                    <p>Tournaments created: {user.tournamentsCreated}</p>
                 </div>
                 <div className='widget user-settings'>
                     <button className='settings-button'>User Settings</button>

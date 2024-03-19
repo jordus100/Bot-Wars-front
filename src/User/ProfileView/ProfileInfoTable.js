@@ -8,28 +8,24 @@ function RatingTable(props) {
     
     useEffect(() => {
         var points = getPointsOfHistoryForPlayer(props.playerid);
-        console.log(points);
         points = points['data'].map((point) => {
             point["logDate"] = point["logDate"].substring(0, 10);
             return point;
         });
-        console.log(points);
         setHistory(points);
     }, [props.playerid]);
 
     var ticksize = 20;
     const chart = 
-        <ResponsiveContainer height={300}>
+        <ResponsiveContainer minWidth={100} minHeight={200}>
             <LineChart data={history}>
                 <CartesianGrid/>
-                <Tooltip />
+                <Tooltip labelStyle={{fontSize: ticksize}} contentStyle={{fontSize: ticksize}}/>
                 <XAxis dataKey="logDate" tick={{fontSize: ticksize}} />
                 <YAxis dataKey="rating" tick={{fontSize: ticksize}} />
                 <Line type="linear" dataKey="rating" stroke="#01FF00" fill="#01FF00" /> 
             </LineChart>
         </ResponsiveContainer>
-        console.log(history);
-
     return (
         <>
         {chart}
