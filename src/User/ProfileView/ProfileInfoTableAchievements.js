@@ -7,32 +7,32 @@ import { Tooltip } from '@mui/material';
 
 function getAchievements(playerId) {
     return [
-        {'achiv': 'achiv1', 'description': 'very good description', 'icon': icon1, 'value': '1000'},
-        {'achiv': 'achiv2', 'description': 'very bad description', 'icon': icon2, 'value': '2000'}, 
-        {'achiv': 'achiv3', 'description': 'very ugly description', 'icon': icon3, 'value': '3000'},
-        {'achiv': 'achiv4', 'description': 'very beautiful description', 'icon': icon2, 'value': '4000'},
-        {'achiv': 'achiv5', 'description': 'very descriptive description', 'icon': icon1, 'value': '5000'},
-        {'achiv': 'achiv6', 'description': 'very good description', 'icon': icon2, 'value': '1000'},
-        {'achiv': 'achiv7', 'description': 'very bad description', 'icon': icon3, 'value': '2000'},
-        {'achiv': 'achiv8', 'description': 'very ugly description', 'icon': icon2, 'value': '3000'},
-        {'achiv': 'achiv9', 'description': 'very beautiful description', 'icon': icon1, 'value': '4000'},
-        {'achiv': 'achiv10', 'description': 'very descriptive description', 'icon': icon3, 'value': '5000'},
-        {'achiv': 'achiv11', 'description': 'very good description', 'icon': icon1, 'value': '1000'},
-        {'achiv': 'achiv12', 'description': 'very bad description', 'icon': icon2, 'value': '2000'},
-        {'achiv': 'achiv13', 'description': 'very ugly description', 'icon': icon3, 'value': '3000'},
-        {'achiv': 'achiv7', 'description': 'very bad description', 'icon': icon1, 'value': '2000'},
-        {'achiv': 'achiv8', 'description': 'very ugly description', 'icon': icon3, 'value': '3000'},
-        {'achiv': 'achiv9', 'description': 'very beautiful description', 'icon': icon1, 'value': '4000'},
-        {'achiv': 'achiv10', 'description': 'very descriptive description', 'icon': icon2, 'value': '5000'},
-        {'achiv': 'achiv11', 'description': 'very good description', 'icon': icon1, 'value': '1000'},
-        {'achiv': 'achiv12', 'description': 'very bad description', 'icon': icon2, 'value': '2000'},
-        {'achiv': 'achiv13', 'description': 'very ugly description', 'icon': icon3, 'value': '3000'},
+        {'achiv': 'achiv1', 'description': 'very good description', 'icon': icon1, 'value': '1000', 'achived': true},
+        {'achiv': 'achiv2', 'description': 'very bad description', 'icon': icon2, 'value': '2000', 'achived': true}, 
+        {'achiv': 'achiv3', 'description': 'very ugly description', 'icon': icon3, 'value': '3000', 'achived': false},
+        {'achiv': 'achiv4', 'description': 'very beautiful description', 'icon': icon2, 'value': '4000', 'achived': true},
+        {'achiv': 'achiv5', 'description': 'very descriptive description', 'icon': icon1, 'value': '5000', 'achived':false},
+        {'achiv': 'achiv6', 'description': 'very good description', 'icon': icon2, 'value': '1000', 'achived': false},
+        {'achiv': 'achiv7', 'description': 'very bad description', 'icon': icon3, 'value': '2000', 'achived': true},
+        {'achiv': 'achiv8', 'description': 'very ugly description', 'icon': icon2, 'value': '3000','achived': false},
+        {'achiv': 'achiv9', 'description': 'very beautiful description', 'icon': icon1, 'value': '4000', 'achived': true},
+        {'achiv': 'achiv10', 'description': 'very descriptive description', 'icon': icon3, 'value': '5000', 'achived': false},
+        {'achiv': 'achiv11', 'description': 'very good description', 'icon': icon1, 'value': '1000', 'achived': false},
+        {'achiv': 'achiv12', 'description': 'very bad description', 'icon': icon2, 'value': '2000', 'achived': true},
+        {'achiv': 'achiv13', 'description': 'very ugly description', 'icon': icon3, 'value': '3000', 'achived': false},
+        {'achiv': 'achiv7', 'description': 'very bad description', 'icon': icon1, 'value': '2000', 'achived': true},
+        {'achiv': 'achiv8', 'description': 'very ugly description', 'icon': icon3, 'value': '3000', 'achived':false},
+        {'achiv': 'achiv9', 'description': 'very beautiful description', 'icon': icon1, 'value': '4000','achived': true},
+        {'achiv': 'achiv10', 'description': 'very descriptive description', 'icon': icon2, 'value': '5000','achived': false},
+        {'achiv': 'achiv11', 'description': 'very good description', 'icon': icon1, 'value': '1000','achived': true},
+        {'achiv': 'achiv12', 'description': 'very bad description', 'icon': icon2, 'value': '2000','achived': false},
+        {'achiv': 'achiv13', 'description': 'very ugly description', 'icon': icon3, 'value': '3000','achived': true},
     ]
 }
 
 function ProfileInfoTableAchievements(props) {
     const {playerId} = props;
-    const [achievements, setAchievements] = useState([{'achiv':'', 'description':'', 'icon':'', 'value':''}]);
+    const [achievements, setAchievements] = useState([{'achiv':'', 'description':'', 'icon':'', 'value':'', 'achived':false}]);
 
     useEffect(() => {
         setAchievements(getAchievements(playerId));
@@ -41,7 +41,8 @@ function ProfileInfoTableAchievements(props) {
     let content = achievements.map((achiv) => {
         let tooltipcontent = <>
             <h3>{achiv.achiv}</h3>
-            <p>{achiv.description}</p>
+            <p>{achiv.description}</p> 
+            <p>Current value: {achiv.value}</p>
       </>
         return (
             <Tooltip 
@@ -50,7 +51,13 @@ function ProfileInfoTableAchievements(props) {
                 enterDelay={500} 
                 leaveDelay={100}>
                 <div className='user-achivments-icon-container'>
-                    <img className='user-achivments-icon' src={achiv.icon}/>
+                    <img 
+                    className='user-achivments-icon' 
+                    src={achiv.icon} 
+                    style={{
+                        filter: `grayscale(${achiv.achived ? 1 : 0}) brightness(${100}%)`,
+                      }}
+                      />
                 </div>
             </Tooltip>
         );
