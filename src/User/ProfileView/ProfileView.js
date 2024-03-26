@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { getUser } from '../../services/Api';
 import ProfileInfoTable from './ProfileInfoTable';
-import ProfileInfoTableAchivments from './ProfileInfoTableAchivments';
+import ProfileInfoTableAchievements from './ProfileInfoTableAchievements';
 
 import './ProfileView.css';
 import ProfileInfoTableButtons from './ProfileInfoTableButtons';
@@ -35,7 +35,7 @@ function ProfileView() {
                     </div>
                 </div>
                 <div className='widget user-achivments'>
-                    <ProfileInfoTableAchivments userId={user.playerid}/>
+                    <ProfileInfoTableAchievements userId={user.playerid}/>
                 </div>
             </div>
             <div className='cell row2col1 notcollapse'>
