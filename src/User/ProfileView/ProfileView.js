@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { getUser } from '../../services/Api';
 import ProfileInfoTable from './ProfileInfoTable';
-import ProfileInfoTableAchievements from './ProfileInfoTableAchievements';
+import ProfileInfoTableAchivments from './ProfileInfoTableAchivments';
 
 import './ProfileView.css';
 import ProfileInfoTableButtons from './ProfileInfoTableButtons';
@@ -24,7 +24,7 @@ function ProfileView() {
         <div className='main-container'>
             <div className='cell row1col1 notcollapse'> 
                 <div className='widget user-photo'>
-                    <img className='profile-image' src={user.photoURL} alt='user-photo'/>
+                    <img className='profile-image' src={user.photoURL} alt='user-pic'/>
                 </div>
             </div>
             <div className='cell row1col2'> 
@@ -39,7 +39,7 @@ function ProfileView() {
                 </div>
             </div>
             <div className='cell row2col1 notcollapse'>
-                {id == myID ? 
+                {id === myID ? 
                     <a className='change-photo' href='/'>Change photo</a> 
                     : 
                     <></>
