@@ -5,8 +5,9 @@ import {Link} from "react-router-dom";
 function App() {
     return (
         <div className="app">
-            <div className="title">
-                <h1>Bot-Wars</h1>
+            <div className="header">
+                <h1 className='title'>Bot-Wars</h1>
+                <div></div>
                 <div className="login-btns">
                     <User isLoggedIn={false}/>
                 </div>
