@@ -139,8 +139,10 @@ function getUser(request){
         "id": request["playerId"],
         "login": "RdmusR_97",
         "rating": 1203,
-        "lastSeen": "2024-02-11T19:21:17.85",
-        "joined": "2024-02-06T19:21:17.85",
+        "lastSeen": "2024-02-11",
+        "joined": "2024-02-06",
+        "botsAdded": 5,
+        "tournamentsCreated": 3,
         "photoURL": "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1709386522~exp=1709387122~hmac=612506df2e857afd82d8b64b5b44128ef42d1e046876d26074bb46b41abe1fb0"
     }
         

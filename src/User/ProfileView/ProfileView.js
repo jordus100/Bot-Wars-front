@@ -52,10 +52,10 @@ function ProfileView() {
             </div>
             <div className='cell row3col1 notcollapse'>
                 <div className='widget user-info'> 
-                    <p>Member since: {user.joined}</p>
-                    <p>Last seen: {user.lastSeen}</p>
-                    <p>Bots added: {user.botsAdded}</p>
-                    <p>Tournaments created: {user.tournamentsCreated}</p>
+                    <p>Member since: <p className='user-info-text'>{user.joined}</p></p>
+                    <p>Last seen: <p className='user-info-text'>{user.lastSeen}</p></p>
+                    <p>Bots added: <p className='user-info-text'>{user.botsAdded}</p></p>
+                    <p>Tournaments created: <p className='user-info-text'>{user.tournamentsCreated}</p></p>
                 </div>
                 <div className='widget user-settings'>
                     <button className='settings-button'>User Settings</button>

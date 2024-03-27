@@ -49,7 +49,8 @@ function ProfileInfoTableAchievements(props) {
                 title={tooltipcontent} 
                 followCursor 
                 enterDelay={500} 
-                leaveDelay={100}>
+                leaveDelay={100}
+                >
                 <div className='user-achivments-icon-container'>
                     <img 
                     className='user-achivments-icon' 

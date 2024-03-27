@@ -28,10 +28,14 @@
 }
 
 .user-info {
-    font-size: 20px;
+    font-size: 30%;
     border: 3px solid black;
     padding: 10px;
     height: 100%;
+}
+
+.user-info .user-info-text {
+    color: aqua;
 }
 
 .user-info-table-container {
