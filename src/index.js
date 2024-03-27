@@ -16,11 +16,11 @@ import AddTournamentForm from "./forms/AddTournamentForm";
 import EditTournamentForm from "./forms/EditTournamentForm";
 import TournamentDetails from "./Tournaments/TournamentDetails";
 import ProfileView from "./User/ProfileView/ProfileView";
-import About from "./about.js";
 import { Provider } from 'react-redux';
 import store from './User/store';
 import { getListOfTournaments } from './Tournaments/getListOfTournaments';
 import UserSettings from './User/Settings/UserSettings';
+import About from './about.js';
 
 const games = [{name:'Szachy', id:1}, {name:'Warcaby', id:2}, {name:'Scrabble', id:3}, {name:'Chińczyk', id:4}, {name:'Go', id:5}]
 

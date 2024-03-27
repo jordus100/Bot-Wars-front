@@ -4,7 +4,7 @@ const baseURL = c["protocol"] + "://" + c["host"] + ":" + c["port"] + "/" + c["p
 
 
 export const Api = axios.create({
-    baseURL: '/api/v1/',
+    baseURL: baseURL,
     withCredentials: true
 })
 
@@ -67,7 +67,7 @@ function Request(data, endpoint, apifunc) {
         })
 }
 
-const achievements = c["urls"]["achievements"]
+const achivments = c["urls"]["achivments"]
 //const gametype = c["urls"]["gametype"]
 //const player = c["urls"]["player"]
 //const points = c["urls"]["points"]
@@ -75,7 +75,7 @@ const tournament = c["urls"]["tournament"]
 //const userSettings = c["urls"]["userSettings"]
 
 function getAcivmentsForPlayer(request) {
-    return Request(request, "achievements", achievements["functions"]["GetachievementsForPlayer"])
+    return Request(request, "achivments", achivments["functions"]["GetAchivmentsForPlayer"])
 }
 
 function getTournaments(request) {
@@ -139,11 +139,109 @@ function getUser(request){
         "id": request["playerId"],
         "login": "RdmusR_97",
         "rating": 1203,
-        "lastSeen": "2024-02-11T19:21:17.85",
-        "joined": "2024-02-06T19:21:17.85",
+        "lastSeen": "2024-02-11",
+        "joined": "2024-02-06",
+        "botsAdded": 5,
+        "tournamentsCreated": 3,
         "photoURL": "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1709386522~exp=1709387122~hmac=612506df2e857afd82d8b64b5b44128ef42d1e046876d26074bb46b41abe1fb0"
     }
         
+}
+
+function getUsersBots(request){
+    //return Request(request, "player", player["functions"]["GetUsersBots"])
+
+    return { "n" : 5,
+        "bots": [{
+            "game": "TicTacToe",
+            "bot": "superBot",
+            "lastModification": "2024-02-06T19:21:17.85",
+            "fileName": "superBot.cpp"
+            },
+            {
+            "game": "Chess",
+            "bot": "chesster",
+            "lastModification": "2024-02-06T19:21:17.85",
+            "fileName": "chesster.cpp"
+            },
+            {
+            "game": "Checkers",
+            "bot": "checky",
+            "lastModification": "2024-02-06T19:21:17.85",
+            "fileName": "checky.cpp"
+            },
+            {
+            "game": "Monopoly",
+            "bot": "monop",
+            "lastModification": "2024-02-06T19:21:17.85",
+            "fileName": "monop.cpp"
+            }
+        ]
+    }
+}
+
+function getAddedGames(request){
+    //return Request(request, "gametype", gametype["functions"]["GetAddedGames"])
+
+    return {
+        "n" : 5,
+        "games": [
+            {
+                "game": "TicTacToe",
+                "lastModification": "2024-02-06T19:21:17.85",
+                "fileName": "TicTacToe.cpp"
+            },
+            {
+                "game": "Chess",
+                "lastModification": "2024-02-06T19:21:17.85",
+                "fileName": "Chess.cpp"
+            },
+            {
+                "game": "Checkers",
+                "lastModification": "2024-02-06T19:21:17.85",
+                "fileName": "Checkers.cpp"
+            },
+            {
+                "game": "Monopoly",
+                "lastModification": "2024-02-06T19:21:17.85",
+                "fileName": "Monopoly.cpp"
+            }
+        ]
+    }
+}
+
+function getUsersPlayedTournaments(request){
+    //return Request(request, "tournament", tournament["functions"]["GetUsersPlayedTournaments"])
+
+    return {
+        "n" : 5,
+        "tournaments": [
+            {
+                "tournament": "TicTacToe",
+                "place": 1,
+                "date": "2024-02-06T19:21:17.85",
+                "reference": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            },
+            {
+                "tournament": "Chess",
+                "place": 2,
+                "date": "2024-02-06T19:21:17.85",
+                "reference": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            },
+            {
+                "tournament": "Checkers",
+                "place": 3,
+                "date": "2024-02-06T19:21:17.85",
+                "reference": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            },
+            {
+                "tournament": "Monopoly",
+                "place": 4,
+                "date": "2024-02-06T19:21:17.85",
+                "reference": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+        ]
+    }
 }
 
 Api.processError = (err) => {
@@ -156,5 +254,7 @@ export {
     getAcivmentsForPlayer,
     getPointsOfHistoryForPlayer,
     getUser,
-
+    getUsersBots, 
+    getAddedGames, 
+    getUsersPlayedTournaments,
 }

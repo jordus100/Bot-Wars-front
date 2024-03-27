@@ -2,11 +2,8 @@ import './AddGameForm.scss'
 import './Form.scss'
 import React, { useState } from "react";
 import {UserService} from "../services/UserService";
-import { connect } from 'react-redux';
-import { login, logout } from '../User/actions';
 
-function LoginForm({isAuthenticated, user, login, logout}) {
-
+function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(true);
@@ -15,11 +12,9 @@ function LoginForm({isAuthenticated, user, login, logout}) {
         e.preventDefault();
 
         try {
-            const response = await UserService.loginUser(email, password)
-            login({ email: email , token: response.data.data})
-            setMessage('Login succesful.')
+            await UserService.loginUser(email, password)
         } catch (e) {
-            setMessage('There was a problem with login.')
+            setMessage('There was a problem with the registration.')
         }
     };
 
@@ -66,12 +61,4 @@ function LoginForm({isAuthenticated, user, login, logout}) {
     )
 }
 
-const mapStateToProps = (state) => ({
-    isAuthenticated: state.isAuthenticated,
-    user: state.user,
-  });
-  
-const mapDispatchToProps = {login,logout,};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
-
+export default RegisterForm

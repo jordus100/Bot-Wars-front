@@ -22,24 +22,24 @@ function ProfileView() {
 
     return (<>
         <div className='main-container'>
-            <div className='cell row1col1'> 
+            <div className='cell row1col1 notcollapse'> 
                 <div className='widget user-photo'>
-                    <img className='profile-image' src={user.photoURL} alt='user-photo'/>
+                    <img className='profile-image' src={user.photoURL} alt='user-pic'/>
                 </div>
             </div>
-            <div className='cell row1col2'>
+            <div className='cell row1col2'> 
                 <div className='widget user-overview'>
                     <div className='user-overview-container'>
                         <p>{user.login}</p>   
                         <p>{user.rating}</p>
                     </div>
                 </div>
-                <div className='widget user-achievements'>
+                <div className='widget user-achivments'>
                     <ProfileInfoTableAchievements userId={user.playerid}/>
                 </div>
             </div>
-            <div className='cell row2col1'>
-                {id === myID ?
+            <div className='cell row2col1 notcollapse'>
+                {id === myID ? 
                     <a className='change-photo' href='/'>Change photo</a> 
                     : 
                     <></>
@@ -50,12 +50,12 @@ function ProfileView() {
                     <ProfileInfoTableButtons setState={setState}/>
                 </div>
             </div>
-            <div className='cell row3col1'>
+            <div className='cell row3col1 notcollapse'>
                 <div className='widget user-info'> 
-                    <p>Member since: {user.joined}</p>
-                    <p>Last seen: {user.lastseen}</p>
-                    <p>Bots added: #TODO#</p>
-                    <p>Tournaments created: #TODO#</p>
+                    <p>Member since: <p className='user-info-text'>{user.joined}</p></p>
+                    <p>Last seen: <p className='user-info-text'>{user.lastSeen}</p></p>
+                    <p>Bots added: <p className='user-info-text'>{user.botsAdded}</p></p>
+                    <p>Tournaments created: <p className='user-info-text'>{user.tournamentsCreated}</p></p>
                 </div>
                 <div className='widget user-settings'>
                     <button className='settings-button'>User Settings</button>
