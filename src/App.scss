@@ -13,7 +13,6 @@
   .header {
     overflow: auto;
     padding: 10px;
-
     display: grid;
     grid-template-columns: 80% 20%;
   }
@@ -35,7 +34,7 @@
       font-size: 30px;
     } 
   }  
-
+  
   .login-btns {
     float: right;
   }
