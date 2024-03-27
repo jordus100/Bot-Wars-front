@@ -10,11 +10,31 @@
     cursor: default;
   }
 
-  .title {
+  .header {
     overflow: auto;
     padding: 10px;
+    display: grid;
+    grid-template-columns: 80% 20%;
   }
 
+  .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (max-width: 579px) {
+    .title {
+      font-size: 45px;
+    } 
+  }
+
+  @media screen and (max-width: 442px) {
+    .title {
+      font-size: 30px;
+    } 
+  }  
+  
   .login-btns {
     float: right;
   }
@@ -25,20 +45,21 @@
   }
 
   .menu-btn {
-    margin: 3px;
-    width: 23%
+    width: 90%;
+    justify-self: center;
   }
 
   .menu-btns {
     margin-top: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    padding: 7px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 100%;
   }
 
   @media only screen and (max-width: 650px) {
-    .menu-btn {
-      width: 100%
+    .menu-btns {
+      grid-template-columns: 50% 50%;
     }
   }
 
